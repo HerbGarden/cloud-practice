@@ -1,0 +1,183 @@
+Path
+ - 절대경로
+ - 상대경로
+
+ls 파일 리스트 보기
+ -a, --all 모든 파일 확인
+ -ㅣ 파일에 대한 자세한 내용
+ -R 자식까지 다 보여주민
+
+
+cd(change directory) 작업 디렉토리 변경
+
+cd ~ 홈으로 가기(shell 안에서)
+
+mkdir 디렉토리 생성
+ -p 부모 디렉토리가 없을시 같이 생성해줌
+
+sentOs 설치 명령어
+ -yum install
+
+tree 트리형식으로 파일을 보여줌
+ -C 을 이용하면 파일 형식을 구분할수 있음
+
+rmdir 디렉토리 삭제
+
+rm 파일 삭제
+ -r 디렉토리 삭제시 사용
+
+touch 파일 생성(크기 0byte로 생성)
+
+프롬프트
+shell에 따라 모양이 달라짐
+
+보통 #은 root
+보통 $는 일반 계정
+
+커맨드 처리 방식
+-일괄처리 방식 : 안물어봄
+-대화식 처리 방식 : 물어봄
+
+*명령어 처리시 우선순위*
+ - 왼쪽에서 오른쪽으로 차례데로 처리
+
+cp 파일 복사
+
+ㅡㅁ
+
+manual page
+커맨드 man
+
+alias 별명 생성
+unalias 별명 지우기
+
+리눅스 기초 명령어 문제
+예제 문제 : http://twoseven.kr/linux2/class/img/yeje.jpg
+예제 풀이 : http://twoseven.kr/yeje.txt
+
+프롬프트 형태를 결정하는 PS1 변수
+ - \u : 계정이름
+ - \h : 호스트 이름
+ - \w : 경로
+ - \W : 경로중 제일 밑 경로
+
+shell - 명령어 해석기
+종류 : bash, csh, ksh, zsh
+
+shell로 프로그래밍 한 것을 shell scropt라 함
+  shell script 목적
+   -시스템 관리 목적
+
+/bin/. 파일에 명령어가 저장되어 있음
+ ->지우면 bash에 없는 명령어는 사용 못함
+
+ - bash에 포함되 있는 명령어 확인방법 man cd
+
+shell 명령어가 우선 적용됨
+
+PATH
+ - 실행 파일에 경우에 PATH안에 있는것만 찾아 실행하고
+   PATH에 없는 것은 경로를 명확히 알려주어야 함
+
+보통 PATH에 경로를 추가시 PATH=$PATH:블라블라 해주면 됨 
+
+현재 디렉토리를 가장 먼저 찾으려면 PATH=.:$PATH를 넣어주면 됨
+
+그래도 안되면 shell 내장 명령어에 들어 있는 것
+
+PATH를 저장하려면 .bash_profile 안에 저장하면 됨
+적용하려면 export PATH를 하면 환경변수로 저장됨
+
+cat
+ -n을 붙이면 줄번호 생성
+ -b 빈줄은 무시
+
+meta character : shell이 특별한 의미로 해석하는 문자(특수문자)
+
+
+--------------------------------------------------------
+192.168.xxx.1 --> host ip
+192.168.xxx.2 --> gateway 주소
+사용 가능 주소
+ 192.168.xxx.3 ~ 192.168.xxx.254 : guest ip
+
+네트워크 고정 하기
+터미널 상에서 - nmtui
+
+dns
+8.8.8.8 - google
+168.126.63.1 - kt
+
+네트워크 최종 적용하기
+nmcli connection reload
+nmcli connection up ens33
+-------------------------------------------------------
+
+자동으로 메모리에 올라가는 것
+
+----*외우기*---------
+ STDIN	0 표준 입력  약자 fd0
+ STDOUT	1 표준 출력	  fd1
+ STDERR	2 표준 에러	  fd2
+---------------------
+
+나머지 서비스 3~ 배정됨
+
+tr hello HELLO 로 하면 치환해서 나옴
+
+정규식
+<< ex)  <<STOP 이 나오면 종료. cat <<STOP > a.txt STOP이 나오면 종료 되고 a에 저장됨
+
+ - 1or 2> /dev/null 로 하면 다 지워짐
+
+***
+pipe 기호 : |
+
+
+ - ; 메타문자
+ 리눅스는 맨 앞 문자만 인식하고 나머지는 인자로 취급
+ ;을 명령어의 끝으로 취급
+	- 왼쪽에서 오른쪽으로 차례대로 명령어 수행
+
+grep - 특정 문자열을 포함하는 라인을 찾기 위해 사용
+
+grep 'r..t' '.' 은 한문자로 취급
+
+정규표현식
+
+정규식 - grep을 검색 가능
+확장정규식 - egrep(== grep -E)
+
+fgrep(fixed grep) - 정규식을 처리안함 (문자열로 다 처리함)
+
+ -i 대소문자 구분 안함
+ -v 포함되는것을 제외하고 표시
+ -n 해당줄 표시
+
+
+리디렉션 - 다른 곳으로 출력 ex) 1>   1은 생략 가능
+					echo hello 1> "장치" : "장치"로 출력
+
+
+find - action에 -exec 을 쓰면 리눅스 명령어를 사용할수 있음
+
+find /etc /usr /var -name '*.mp3' -exec cp {} ./backup \;
+ - -name은 
+ - /etc /usr /var 은 찾을 것을 앞에 디렉토리 안에서 찾음
+ - {}는 찾은 파일을 의미
+ - -exec는 -exec 부터 \; 사이의 명령어를 실행 
+
+
+문제 : http://twoseven.kr/linux2/bbs/board.php?bo_table=homework&wr_id=2
+답안 : twoseven.kr/homework2.txt
+
+4 = 13
+5 = -L
+6 = 아니요 /D/E 에 것이 실행
+7 = 11
+8 = ㄴ
+9 = grep -v '#' /etc/yum.conf > /tmp/test.conf
+10 = whereis mkdir	/usr/bin/mkdir
+11 = whereis math.h	/usr/include/math.h
+12 = find /home -name '.bashrc'
+13 = find / -name 'grub.cfg' -exec cp {} /tmp \;

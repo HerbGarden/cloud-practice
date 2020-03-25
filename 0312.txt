@@ -1,0 +1,120 @@
+man 
+ - $MANPATH 참조(설정안되어 있으면) -> /etc/man_db.conf에서 $MANPATH참조
+
+ man0에서 부터 차례대로 확인해서 설명이 있으면 보여줌
+
+ 숫자마다 설명해 주는 것이 다름
+
+ man 1,3,5,8을 자주 사용함
+
+ man을 등록하기 위해서는 /etc/man_db.conf 에서 mandatory_manpath에 경로를
+ 저장해 주어야 한다
+ 
+ 편집기 종류
+ - nano
+ - vim
+	~가 맨앞 줄에 있을시 아무런 문장이 없는 것
+ - emacs
+
+vim
+-명령모드
+-입력모드
+-확장모드(last line mode)
+
+tab 설정
+:set tabstop=4(=>ts=4)(default:8)
+
+창부분에 파일 이름 보여줌
+:set title
+
+경고 보여주기
+:set vb
+
+vim 환경 설정
+ - 홈에 .vimrc 파일을 만들어 설정을 저장해 두면 설정파일을 먼저 실행해
+   원하는 설정을 계속 쉽게 불러올수 있음
+
+vi로 파일을 열면 스왑 파일이 생김
+다른 계정에서 그 파일로 접근하려 하면 스왑 파일이 생긴 이유가 나오며 경고문을 띄움
+만약 파일이 깨졌어도 똑같은 경고창이 뜸
+
+vim은 비 저상적으로 종료되면 스왑 파일이 남아 있음
+
+vim 연습하기
+리눅스 터미널 안에서:vimtutor
+웹사이트 : https://www.openvim.com/
+vim 게임 : vimgame
+펙맨 : https://geeksww.com/tutorials/operating_systems/linux/tools/how_to_download_compile_and_install_gnu_ncurses_on_debianubuntu_linux.php
+
+연습문제 vi
+http://twoseven.kr/linux2/bbs/board.php?bo_table=homework&wr_id=3
+풀이과정
+twoseven.kr/homework3.txt
+
+1:G -> o -> hello unix
+2:5000G -> o -> hello linux
+3: :57, 99 copy 2000
+4: 7000G -> 100dd
+5: :9000, $d
+6: cd -> vi .vimrc -> i -> set nu (enter) set ts=5 (enter) set title -> (esc):wq
+7: :5, 20s/nologin/bash/g
+8: :1,$s/bin/BIN/g (or) %s/bin/BIN/g
+9: :1,10 move $
+
+
+계정관리
+ - 1~999까지 시스템 계정(cenOS 7.x버전)
+ - 계정과 관련되있는 파일 /etc/passwd- , /etc/shadow-, /etc/group-
+백업 파일
+passwd- (끝에 -가 붙어있으면 백업 파일)
+백업되는 시간 - 원본이 수정되는 시간에 백업 됨
+
+root:x:0:0:root:/root:/bin/bash
+의미 있는 문자열 및 각 숫자는 콜론 문자로 구분되어 있다.
+root : 계정명
+x : 패스워드 필드 x 로 표시되어 있으면 패스워드가 /etc/shadow 파일에 저장되어
+ 있다는 의미
+패스워드를 shadow 파일에 두면 패스워드를 보호할 수 있다.
+(shadow file 에 대한 접근은 root 만 읽을수 있고 수정할수 있다.)
+0 : 커널이 참조하는 root 사용자의 식별자.
+0 : root 사용자가 속한 첫 번째 그룹(primary group)을 나타낸다
+root : 단순히 참고하기위한 용도로 사용되며 이 필드는 비어져 있어도 된다
+/root : root 사용자의 홈 디렉토리
+/bin/bash : login shell
+
+shadow 파일 없을시 비번 변경 불가
+비번 크랙 방법https://redscreen.tistory.com/136
+
+hash 암호화
+ $6으로 시작한것->sha512
+
+마지막 비번 변경일자
+change -l root
+
+
+shadow 파일에서 관리
+	paaword aging(암호정책)
+	
+	암호최소변경주기 : 3일
+ 
+	암호최대변경주기 : 30일
+
+	경고일수 : 암호만료되기 7일전부터
+
+	inactive: 암호가 만료되엇을때 그 계정을 어떻게 처리할 것인가.
+		양의 정수 : 유예기간 부여
+	    	0 : 즉시 계정을 expire 시킴
+	   	-1 : expire 시키지 않음
+	암호 만료: 암호 만료일까지 사용 가능
+	shadow파일 내에 비번부분에 *(보통 시스템쪽),!!(보통 암호를 주지 않았을때)
+	있으면 계정이 잠겨 있는 것
+
+	passwd --delete user 를 하면 비밀번호가 지워짐
+	ssh는 보안상 자동으로 차단하지만 몇몇(telnet, ftp)같은것은 자동으로 로그인
+	되어 보안상 안좋음
+내가 정리한 거 보다 깔끔함 : https://andrew0409.tistory.com/35
+
+메일함 위치 /var/spool/mail/
+
+	계정 생성시 -p 옵션을 쓰면 그 문자 그대로 비번이 들어가짐
+
