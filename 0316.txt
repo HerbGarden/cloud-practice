@@ -50,6 +50,10 @@ cron - 일정한 주기마다 실행될 작업 예약
 daemon == server
 
 at - 예약한 시간에 명령
+	at 10:01 Dec 15 endter
+	>실행할 명령어 적기
+	>ctrl+d 빠져나오기
+
 atq - 예약한 명령 확인 - 자신이 한 명령어만 확인 가능 (root만 다 볼수 있음)
 atrm - 예약 삭제
 at 명령 제한 하기
