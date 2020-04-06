@@ -2771,3 +2771,37 @@
  2771  ls
  2772  vi history.sh 
  2773  ./history.sh 
+ 2774  ls
+ 2775  cd git/
+ 2776  ls
+ 2777  cd history/
+ 2778  ls
+ 2779  cat 0406root.txt 
+ 2780  ls
+ 2781  cd ..
+ 2782  ls
+ 2783  git push -u origin master
+ 2784  ls
+ 2785  cd ..
+ 2786  cd -
+ 2787  git push -u origin master
+ 2788  git push
+ 2789  git config --global push.default matching
+ 2790  git push
+ 2791  ls
+ 2792  git add -A
+ 2793  git push
+ 2794  git fetch
+ 2795  ls
+ 2796  git config --list
+ 2797  git add -A
+ 2798  git commit -m "history"
+ 2799  git push
+ 2800  cd ..
+ 2801  ls
+ 2802  vi history.sh
+ 2803  ./history.sh 
+ 2804  vi history.sh
+ 2805  ./history.sh 
+ 2806  vi history.sh
+ 2807  ./history.sh 
