@@ -3143,3 +3143,9 @@
  3143  mail
  3144  ls
  3145  ./history.sh
+ 3146  cd git/
+ 3147  ls
+ 3148  cd ..
+ 3149  vi history.sh 
+ 3150  ./history
+ 3151  ./history.sh 
