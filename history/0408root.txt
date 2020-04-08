@@ -3655,3 +3655,11 @@
  3655  ls
  3656  vi history.sh 
  3657  ./history.sh 
+ 3658  ls
+ 3659  cd git/
+ 3660  git pull
+ 3661  ls
+ 3662  cd ..
+ 3663  ls
+ 3664  vi history.sh 
+ 3665  ./history.sh 
