@@ -3646,3 +3646,12 @@
  3646  nmcli device connect ens38
  3647  ls
  3648  ./history.sh
+ 3649  ls
+ 3650  cd git/
+ 3651  ls
+ 3652  git fetch
+ 3653  ls
+ 3654  cd ..
+ 3655  ls
+ 3656  vi history.sh 
+ 3657  ./history.sh 
