@@ -1,0 +1,467 @@
+use mysql;
+grant all privileges on *.* to root@'192.168.10.1' identified by '1234';
+grant all privileges on test.* to ms@'%' identified by 'passwd';
+flush privileges;
+show databases;
+user emplyees
+;
+use employees;
+describe emplyees;
+show emplyees;
+show table employees;
+show employees;
+select * from emplyees;
+show emplyees;
+show employees;
+show tables;
+select * from titles;
+describe titles;
+select count(*) from employees;
+show tables;
+use employees
+desc emplyees;
+desc employees;
+show tables;
+desc departments
+;
+desc titles;
+show full coumns from titles;
+show full columns from titles;
+select database();
+use bye;
+bye
+;
+use mysql;
+show tables;
+show root
+;
+show /
+;
+show databases;
+use emplyees;
+use employees;
+show databases;
+select user();
+select host, user, passwd, create_pri from user;
+use mysql;
+select host, user, password, create_priv from user;
+use mysql;
+select host, user, password, create_priv from user;
+select mysql.host, user, password, create_priv from user;
+use mysql;
+select mysql(host,user,password,create_priv) from user;
+show databases;
+use test;
+use mysql;
+use sample;
+show tables;
+show databases;
+create table mytable(
+id int,
+name varchar(12),
+phone char(15),
+constraint player_pk primary key (id));
+create table mytable( id int, name varchar(12), phone char(15), constraint player_pk primary key (id));
+\e
+;
+create table mytable( id int, name varchar(12), phone char(15), constraint player_pk primary key (id));
+show tables;
+desc mytable;
+\e
+q
+;
+desc mytable q;
+insert into mytable(id,name,phone) values('2020156001',' 길동', '010-1234-4311');
+select * from mytable;
+insert into mytable(id,name,phone) values('2020156002','길동', '010-1234-4321');
+select * from mytable;
+insert into mytable(id,name,phone) values('2020156002','hi');
+insert into mytable(id,name,phone) values('2020156002','hi','');
+select * from mytable;
+insert into mytable(id,name,phone) values('2020156003','hi','');
+select * from mytable;
+insert into mytable(id,name) values('2020156004','hihi');
+insert into mytable(id,name,phone) values(2020156005,'heesun','02-1232-2345');
+select * from mytable;
+/h
+;
+\h
+use mysql
+/h
+;
+\h
+describe user;
+select * from user;
+create database testdb;
+user testdb;
+use testdb;
+create table t1(id char(20));
+insert into t1(id) values('ms');
+select * from t1;
+show variables like 'c%';
+use mariadb
+status
+use newdb
+select * from newdb;
+select * from t1;
+insert into t1(id,name,address) values('안녕','하십니까','여러분');
+select * from t1;
+create table t2(id varchar(10));
+insert into t2(id) values('확인');
+select * from t2;
+status
+set character_set_client =utf8;
+status
+set character_set_results =utf8;
+status
+set character_set_connection =utf8;
+status
+create database myshop;
+use myshop
+status
+create table mytable;
+create table mytable(
+id char(10),
+name varchar(15),
+tel char(11),
+addr varvhar(80),
+);
+create table mytable( id char(10), name varchar(15), tel char(11), addr varvhar(80), );
+create table mytable( id char(10), name varchar(15), tel char(11), addr varvhar(80));
+create table mytable( id char(10), name varchar(15), tel char(11), addr varchar(80));
+insert into mytable values('1','홍길동',01012341234,'서울특별시 종로구')
+;
+select * from mytable;
+drop database newdb;
+show batabases;
+show databases;
+status
+show databases;
+show tables;
+use sqldb
+select count(mobile1) from user;
+select count(mobile2) from user;
+select count(mobile1) from user;
+update user set mobile1=NULL
+;
+select count(mobile1) from user;
+;
+update user set mobile1='010' where user_id='BBK';
+update user set mobile1='011' where user_id='EJW';
+update user set mobile1='018' where user_id='JKW';
+update user set mobile1='011' where user_id='JYP';
+delete table uesr;
+delete from uesr
+;
+delete from user;
+show tables;
+select * from user;
+update user set mobile1='011' where addr='경기';
+update user set mobile1='011' where addr='서울';
+update user set mobile1='019' where addr='경남';
+update user set mobile1='018' where name='조관우';
+update user set mobile1='010' where name='바비킴';
+select count(mobile1) from user;
+select host, name from mysql.user;
+use mysql
+show tables;
+select * from user;
+select host,user from mysql.user;
+grant all on *.* to admin@localhost
+;
+select host,user from mysql.user;
+grant select,insert,delete,update on ;
+show databases;
+grant select,insert,delete,update on shop_db.* to webuser1@'%'
+grant create on *.* to webuser2@'localhost'
+;
+grant create on *. to webuser2@'localhost'
+;
+grant create on *.'' to webuser2@'localhost';
+grant create on *.? to webuser2@'localhost';
+grant create on *.* to admin2@'localhost';
+revoke all on *.* from webuser2@'localhost';
+show databases;
+create database hi;
+show databases;
+drop database hi;
+show databases;
+use test;
+show databases;
+show tables;
+use shop_db;
+use shop_db
+show databases;
+create database shop_db
+;
+show tables;
+show databases;
+use shop_db
+create table user1()
+\e
+;
+create table user1( id varchar(2)  );;
+create table user1( id varchar(2)  );
+show databases;
+use testdb
+show tables;
+select * from t1;
+use world
+show tables;
+select c from country as co inner join countrylanguage as c on co.countrycode = c.countrycode;
+select c from country as 'co' inner join countrylanguage as 'c' on co.countrycode = c.countrycode;
+select c from country as co join countrylanguage as 'c' on co.countrycode = c.countrycode;
+select * from country;
+select * from country limit 5;
+select c from country as co join countrylanguage as 'c' on co.code = c.countrycode;
+select c.language from country as co join countrylanguage as 'c' on co.code = c.countrycode;
+select c.* from country as co join countrylanguage as 'c' on co.code = c.countrycode;
+select c.* from country AS co join countrylanguage as 'c' on co.code = c.countrycode;
+show tables;
+select c.* from country AS co join countrylanguage as c on co.code = c.countrycode;
+select c.* from country AS co join countrylanguage as c on co.code = c.countrycode where co.code=ESP order by desc;
+select c.* from country AS co join countrylanguage as c on co.code = c.countrycode where co.code=ESP order by percentage desc;
+select c.* from country AS co join countrylanguage as c on co.code = c.countrycode where co.code='ESP' order by percentage desc;
+show tables;
+ls
+;
+show databases;
+use sqldb
+show tables;
+select * from user;
+select * from user limit 2;
+select * from buy limit 2;
+insert into buy(user_id,group_name,price) values('BBK', '노트북', '1500');
+select * from buy;
+delete from buy
+;
+rollback
+;
+select * from buy;
+load data local infile '/tmp/db/buy.data' into table buy;
+select * from buy;
+desc buy;
+insert into buy(user_id,prod_name,price) values('BBK', '노트북', '1500');
+select * from buy;
+update buy set amount=1 where num=32;
+select * from buy;
+insert into buy values('','SSK','아이폰','','500','2');
+select * from buy;
+insert into buy values('BBK','아이폰','','500','2');
+update buy set group_name='전기' where group_name='전자'; 
+update buy set price=1000 where price<=100; 
+select * from buy;
+update buy set price=1000 where price>=100; 
+select * from buy;
+rollback
+;
+show variables;
+show variables like 'auto%';
+set autocommit=0
+;
+show variables like 'auto%';
+show databases;
+drow database hi;
+drop database hi;
+show databases;
+use sample
+show tables;
+\e
+;
+create table t1( 	user_id char(8) not null primary key, 	name varchar(10) not null, 	birth_year int null, 	addr char(2), 	mobile char(3), 	mobile2 varchar(8), 	height smallint, 	m_date date );;
+desc t1
+;
+/e
+;
+\e
+;
+create table s1 ( 	id char(8) not null primary key, 	class tinyint, 	name varchar(20), 	phone char(14), 	score1 int, 	score2 int, 	score3 int );;
+create database haksa;
+show tables;
+use haksa;
+create table score(select * from sample.t1);
+show tables;
+desc score;
+drop table score;
+create table score(select * from sample.s1);
+desc score;
+alter table score modify id primary key;
+alter table score add primary key(id);
+desc score;
+load data local infile '/root/sungjuk.data' into table score;
+select * from score;
+load data local infile '/root/sungjuk.data' replace into table score;
+select * from score;
+show databases;
+use sample;
+desc s1;
+use haksa;
+show tables;
+desc score;
+alter table socre modify class not null;
+alter table socre modify (class not null);
+alter table socre modify class char(1) not null;
+alter table score modify class char(1) not null;
+desc score;
+alter table score modify name varchar(20) not null;
+desc score;
+alter table score modify phone char(13) not null;
+alter table score modify phone char(14) not null;
+commit
+;
+show variables;
+show variables like 'auto%';
+show variables where variable_name in ('version', 'log','general_log');
+show tables;
+show databases;
+use haksa
+show table;
+show tables
+;
+alter table score add total int;
+desc score
+;
+select * from score;
+update score set total=(score1 + score2 + score3 );
+select * from score;
+alter table score add avg int;
+update score set avg=(score1 + score2 + score3 )/3;
+select * from score;
+alter table score change avg int;
+alter table score change avg float;
+alter table score change avg avg float;
+desc score;
+update score set avg=(score1 + score2 + score3 )/3;
+select * from score;
+alter table score drop primary key;
+desc score;
+alter table score modify id char(8) primary key;
+desc score;
+show databases;
+ser modeldb
+;
+use modeldb
+use modelDB
+show tables;
+desc buytbl;
+desc userTBL;
+show databases;
+use sqldb
+show tables;
+desc buy
+;
+desc user
+;
+show create table user;
+use clubDB
+insert into stdTBL values ('김범수')
+\ㄷ
+\e
+;
+insert into stdTBL values  ('김범수','경남'), ('성시경','서울'), ('조용필','경기'), ('은지원','경북'), ('바비킴','서울'));;
+insert into stdTBL values  ('김범수','경남'), ('성시경','서울'), ('조용필','경기'), ('은지원','경북'), ('바비킴','서울');
+\e
+;
+insert into clubTBL values  ('수영','101호'), ('바둑','102호'), ('축구','103호'), ('봉사','104호');;
+\e
+;
+insert into stdclubTBL values  (NULL,'김범수','바둑'), (NULL,'김범수','축구'), (NULL,'조용필','축구'), (NULL,'은지원','축구'), (NULL,'은지원','봉사'), (NULL,'바비킴','봉사');;
+select * from *;
+select * from clubTBL;
+select * from stdclubTBL;
+select * from stdTBL;
+show create table stdclubTBL;
+select stdclubTBL.stdName frome stdTBL,stdclubTBL;
+select clubName frome stdTBL,stdclubTBL;
+show tables;
+select clubName frome stdTBL,stdclubTBL;
+select clubName frome stdTBL, stdclubTBL;
+select * from clubTBL, stdTBL;
+select clubName frome clubBTL,stdclubTBL;
+select clubName frome clubTBL,stdclubTBL;
+select * from clubTBL;
+select stc.clubName from stdTBL as st,stdclubTBL as stc;
+select * from stdTBL,clubTBL;
+select * from stdTBL,clubTBL,stdclubTBL;
+select * from stdTBL,clubTBL,stdclubTBL limit 5; 
+select num from stdTBL,clubTBL,stdclubTBL limit 5; 
+show tables;
+select * from stdTBL as std, clubTBL as club;
+select * from stdTBL inner join clubTBL on stdTBL. = clubTBL.;\e
+;
+select c.clubName, c.roomNo, s.stdName, s.addr from stdTBL s
+inner join stdclubtbl sc on sc.stdName = s.stdName
+inner join clubTBL c
+on sc.clubName = c.clubName oreder by c.clubName;
+select c.clubName, c.roomNo, s.stdName, s.addr from stdTBL s inner join stdclubtbl sc on sc.stdName = s.stdName inner join clubTBL c on sc.clubName = c.clubName oreder by c.clubName;
+select c.clubName, c.roomNo, s.stdName, s.addr from stdTBL s inner join stdclubtbl sc on sc.stdName = s.stdName inner join clubTBL c on sc.clubName = c.clubName order by c.clubName;
+select c.clubName, c.roomNo, s.stdName, s.addr from stdTBL s inner join stdclubTBL sc on sc.stdName = s.stdName inner join clubTBL c on sc.clubName = c.clubName order by c.clubName;
+select * from stdBTL, clubBTL, stdclubBTL limit 3;
+select * from stdTBL, clubTBL, stdclubTBL limit 3;
+select * from stdclubTBL;
+insert into stdclubTBL values(NULL,'성시경',NULL);
+select s.*, c.clubName from stdTBL as s
+\e
+;
+select s.*, c.clubName from stdTBL as s inner join stdclubTBL sc on sc.stdName = S.stdName left outer join clubTBL c on sc.clubName = c.clubName;
+select s.*, c.clubName from stdTBL as s inner join stdclubTBL sc on sc.stdName = s.stdName left outer join clubTBL c on sc.clubName = c.clubName;
+select s.*, c.clubName from stdTBL as s inner join stdclubTBL sc on sc.stdName = s.stdName right outer join clubTBL c on sc.clubName = c.clubName;
+select s.*, c.clubName from stdTBL as s inner join stdclubTBL sc on sc.stdName = s.stdName left outer join clubTBL c on sc.clubName = c.clubName;
+show keys from stdclubTBL;
+show keys from stdTBL;
+select * from information_schema.table_constraints where constraint_schema = 'clubBTL';
+select * from information_schema.table_constraints where constraint_schema = 'clubTBL';
+select * from information_schema.table_constraints where constraint_schema = 'clubDB';
+use sqldb;
+create table emptbl (emp char(3), manager char(3), emptel varchar(8));
+insert into emtbl values('나사장',NULL,'0000'),\e
+;
+insert into emtbl values ('나사장',NULL,'0000'), ('김재무','나사장','2222'), ('김부장','김재무','2222-1'), ('이부장','김재무','2222-2'), ('우대리','이부장','2222-2-1'), ('지사원','이부장','2222-2-2'), ('이영업','나사장','1111'), ('한과장','이영업','1111-1'), ('최정보','나사장','3333'), ('윤차장','최정보','3333-1'), ('이주임','윤차장','3333-1-1');
+insert into emptbl values ('나사장',NULL,'0000'), ('김재무','나사장','2222'), ('김부장','김재무','2222-1'), ('이부장','김재무','2222-2'), ('우대리','이부장','2222-2-1'), ('지사원','이부장','2222-2-2'), ('이영업','나사장','1111'), ('한과장','이영업','1111-1'), ('최정보','나사장','3333'), ('윤차장','최정보','3333-1'), ('이주임','윤차장','3333-1-1');
+select a.emp as '부하직원', b.emp as '직속상관', b.emptel as '직속상관연락처'
+from emptbl a inner join emptbl b on a.manager = b.emp where a.emp = '우대리';
+select a.emp as '부하직원', b.emp as '직속상관', b.emptel as '직속상관연락처' from emptbl a inner join emptbl b on a.manager = b.emp where a.emp = '우대리';
+show databases;
+use sqldb;
+show tables;
+desc v_user;
+show table v_user;
+select * from v_user;
+use erd;
+show create tables scTBL;
+show tables;
+show create table scTBL;
+show databases;
+status
+select * from user;
+use sqldb
+select * from user;
+lock tables user read;
+show open tables where in_user > 0;
+show open tables where sqldb > 0;
+show open tables;
+show open tables where in_use > 0;
+select * from user;
+unlock tables;
+lock tables user read;
+unlock tables;
+show open tables where in_use > 0;
+show open tables where in_user > 0;
+show open tables where in_use > 0;
+lock tables user write,buy read;
+show open tables where in_use > 0;
+show open tables in sqldb;
+show tables;
+show databases;
+drop database sqldb;
+show tables;
+show databases;
+drop database sqldb;
+show databases;
+source /var/backup/sqldb.sql
+show tables;
+show databases;
+qui
+t
+;
+qui t;
