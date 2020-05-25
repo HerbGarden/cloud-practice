@@ -1,0 +1,2297 @@
+    1  poweroff
+    2  yum -y install dump
+    3  man dump
+    4  man fsck
+    5  fsck /dev/sdb3
+    6  fsck -f /dev/sdb3
+    7  history
+    8  df -h
+    9  fdisk -l /dev/sdb
+   10  fdisk -l /dev/sdc
+   11  fdisk -l /dev/sdd
+   12  fdisk -l /dev/sde
+   13  ls /dev/sd*
+   14  ls /dev/sda
+   15  fdisk -l /dev/sda
+   16  fdisk /dev/sdb
+   17  fdisk -l /dev/sdb
+   18  mkfs.ext4 /dev/sdb1
+   19  mkfs.ext4 /dev/sdb2
+   20  mkfs.ext4 /dev/sdb3
+   21  mkfs.xfs /dev/sdb5
+   22  clear
+   23  cd /
+   24  mkdir /mailhome
+   25  mount /dev/sdb1 /mailhome
+   26  df
+   27  df -h
+   28  mount /dev/sdb2 /ftphome
+   29  mkdir /ftphome
+   30  mount /dev/sdb2 /ftphome
+   31  df -h
+   32  useradd -d /mailhome/mailuser1 mailuser1
+   33  useradd -d /mailhome/mailuser2 mailuser2
+   34  useradd -d /ftphome/ftpuser1 ftpuser1
+   35  useradd -d /ftphome/ftpuser2 ftpuser2
+   36  ls /mailhome/
+   37  ls /ftphome/
+   38  df /ftphome/
+   39  cd /etc/
+   40  ls fstab
+   41  cp fstab fstab.orig
+   42  vi fstab
+   43  ls
+   44  vi fstab
+   45  umount /dev/sdb1
+   46  mount -a
+   47  df
+   48  blkid /dev/sdb2
+   49  vi fstab
+   50  umount /dev/sdb2
+   51  mount -a
+   52  df
+   53  df -h
+   54  vi fstab
+   55  umount /dev/sdb2
+   56  vi fstab
+   57  df -h
+   58  mount -a
+   59  df
+   60  df -h
+   61  df -h /ftphome/
+   62  df
+   63  df -h
+   64  vi fstab
+   65  cp fstab fstab.new
+   66  cp fstab.orig fstab
+   67  vi fstab
+   68  umount -a
+   69  mount -a
+   70  df
+   71  df -h
+   72  df
+   73  ls /home/
+   74  /dev/
+   75  fdisk /dev/sdb
+   76  mkfs.ext4 /dev/sdb1
+   77  ls
+   78  cd ..
+   79  ls
+   80  ls test
+   81  mkdir /test
+   82  mount /test
+   83  vi fstab
+   84  vi /etc/fstab
+   85  df -h
+   86  mount /dev/sdb1 /test/
+   87  df -h
+   88  cp -rp /home/* /test/
+   89  ls /test/
+   90  ls home/
+   91  ll /home/
+   92  ll /test/
+   93  umount /test/
+   94  df -h
+   95  mv /home/ /homes/
+   96  df -h
+   97  mount -a
+   98  df -h
+   99  su - ms
+  100  su - puser1
+  101  umount /home/
+  102  df -h
+  103  rm -rf /home/
+  104  ll home/
+  105  ll /home/
+  106  df -h
+  107  ls
+  108  ls /home/
+  109  cd /home/
+  110  ls
+  111  cd ..
+  112  mount /home/
+  113  df -h
+  114  ls /home/
+  115  ls test/
+  116  cd /test/
+  117  cp -rp /home/* /test
+  118  ls testuser/
+  119  ll
+  120  cd ..
+  121  umount
+  122  umount /home/
+  123  ls
+  124  fdsik /dev/sdb
+  125  fdisk /dev/sdb
+  126  fdisk -l /dev/sdb
+  127  mkfs.ext4 /dev/sdb1
+  128  fdisk -l /dev/sdb
+  129  df -h
+  130  mount /dev/sdb1 /home/
+  131  ls
+  132  df -h
+  133  cd /home/
+  134  ll
+  135  cp -rp /test/* .
+  136  ll
+  137  cd ..
+  138  ls
+  139  rm -rf /test
+  140  ls
+  141  umount /home/
+  142  blkid /dev/sdb1
+  143  vi /etc/fstab
+  144  ls
+  145  d f-h
+  146  df -h
+  147  mount -a
+  148  df -h
+  149  su - ms
+  150  ls /home/
+  151  su - puser1
+  152  df -h
+  153  umount /home/
+  154  ls
+  155  mount -a
+  156  df -h
+  157  poweroff
+  158  su - muser200
+  159  su - muser10
+  160  su - muser100
+  161  su - muser200
+  162  su - muser100
+  163  su -
+  164  ls
+  165  df -h
+  166  fdisk /dev/sdc
+  167  ls
+  168  mkfs.ext4 /dev/sdc1
+  169  ls
+  170  cd /
+  171  ls
+  172  rm -rf mailhome/
+  173  mkdir /mailhome
+  174  ls
+  175  mount /dev/sdc1 /mailhome/
+  176  df -h
+  177  useradd -d /mailhome/muser10 muser10
+  178  useradd -d /mailhome/muser20 muser20
+  179  useradd -d /mailhome/muser30 muser30
+  180  useradd -d /mailhome/muser40 muser40
+  181  useradd -d /mailhome/muser50 muser50
+  182  useradd -d /mailhome/muser100 -g groupM muser100
+  183  groupadd groupM
+  184  useradd -d /mailhome/muser100 -g groupM muser100
+  185  useradd -d /mailhome/muser200 -g groupM muser200
+  186  vi /etc/fstab
+  187  mount -o remount /mailhome/
+  188  mount | grep -i /mailhome
+  189  ll mailhome/
+  190  quotacheck -guv /mailhome/
+  191  quotaon -gvu /mailhome/
+  192  edquota -u muser10
+  193  edquota -p muser10 muser20
+  194  repquota -u
+  195  repquota -a
+  196  q
+  197  edquota -p muser10 muser30
+  198  edquota -p muser10 muser40
+  199  edquota -p muser10 muser50
+  200  edquota -g groupM
+  201  repquota -a
+  202  repquota -g
+  203  repquota -g groupM
+  204  repquota -u muser10
+  205  man repquota
+  206  repquota -u
+  207  repquota -u msuer10
+  208  repquota -u /mailhome/msuer10
+  209  repquota -a
+  210  quota -g groupM
+  211  cd /mailhome/
+  212  ls
+  213  ll
+  214  repquota -a
+  215  sync
+  216  repquota -a
+  217  sync
+  218  repquota -a
+  219  cp /mailhome/muser10/bigdata /mailhome/muser100/bigdata
+  220  sync
+  221  repquota -a
+  222  sync
+  223  repquota -a
+  224  sync
+  225  repquota -a
+  226  quota -g groupM
+  227  cp /mailhome/muser10/bigdata /mailhome/muser200/bigdata
+  228  quota -g groupM
+  229  sync
+  230  quota -g groupM
+  231  sync
+  232  quota -g groupM
+  233  sync
+  234  ll
+  235  quota -g groupM
+  236  repquota -g
+  237  repquota -g groupM
+  238  repquota -gv groupM
+  239  repquota -a
+  240  repquota -a /mailhome/
+  241  repquota -u /mailhome/
+  242  repquota -g /mailhome/
+  243  repquota -ug /mailhome/
+  244  ls
+  245  usermod -G groupM muser50
+  246  ls
+  247  repquota -g /ftphome/
+  248  repquota -g /
+  249  repquota -g /mailhome/
+  250  ls
+  251  ll
+  252  chmod 750 muser200
+  253  ls
+  254  groups muser5
+  255  groups groupM
+  256  groups muser50
+  257  cd muser200
+  258  ls
+  259  su - muesr5
+  260  su - muesr50
+  261  su - muser50
+  262  ll
+  263  cd ..
+  264  ll
+  265  chmod 770
+  266  chmod 770 muser200
+  267  ls
+  268  su - muser5
+  269  su - muser50
+  270  repquota /mailhome/
+  271  repquota -g /mailhome/
+  272  quotaoff -uvg /mailhome/
+  273  cd ..
+  274  ls
+  275  repquota -g /mailhome/
+  276  ls
+  277  cd m
+  278  cd /mailhome/
+  279  ls
+  280  mount
+  281  df -h
+  282  quotaoff -vgu /mailhome/
+  283  umount /mailhome/
+  284  cd ..
+  285  cd /mailhome/
+  286  ll
+  287  rm -rf aquota.*
+  288  ls
+  289  cd ..
+  290  ls
+  291  quotaon /mailhome/
+  292  vi /etc/fstab
+  293  ls
+  294  umount /ftphome/
+  295  umount /mailhome/
+  296  ls
+  297  mount /dev/sdc1 /mailhome/
+  298  ls
+  299  ll mailhome/
+  300  quotacheck -vgu /mailhome/
+  301  df -h
+  302  quotacheck -vgu /mailhome/
+  303  mount | grep /mailhome
+  304  ls
+  305  vi /etc/fstab
+  306  mount -o remount /mailhome/
+  307  quotacheck -ugv /mailhome/
+  308  ls
+  309  quotaon -ugv /mailhome/
+  310  edquota -u mailhome/
+  311  edquota -u muesr10
+  312  edquota -u muser10
+  313  edquota -g groupM
+  314  quotaoff -ugv mailhome/
+  315  rm -rf /mailhome/aquota.*
+  316  ls
+  317  vi /etc/fstab
+  318  umount /mailhome/
+  319  ls
+  320  df -h
+  321  history
+  322  echo $HISTSIZE
+  323  HISTSIZE=2000
+  324  echo $HISTSIZE
+  325  vi /etc/profile
+  326  source /etc/profile
+  327  echo $HISTSIZE
+  328  source /etc/profile
+  329  echo $HISTSIZE
+  330  vi /etc/profile
+  331  source /etc/profile
+  332  echo $HISTSIZE
+  333  ls
+  334  cd history/
+  335  ls
+  336  cd ..
+  337  crontab -e
+  338  ls
+  339  vi history.sh
+  340  cd history/
+  341  ls
+  342  cat 0320root.txt 
+  343  rm -rf 0320root.txt 
+  344  cd ..
+  345  ls
+  346  vi history.sh
+  347  history.sh
+  348  ./history.sg
+  349  ./history.sh
+  350  ls
+  351  cat 0320root.txt 
+  352  history -w hi.txt
+  353  cat hi.txt 
+  354  ls
+  355  rm -rf hi.txt 0320root.txt 
+  356  ls
+  357  vi history.sh 
+  358  vi savehis
+  359  bash savehis 
+  360  ls
+  361  cat 0320.txt 
+  362  date
+  363  vi history
+  364  vi savehis 
+  365  bash savehis 
+  366  ls
+  367  cat a.txt 
+  368  rm -rf a.txt 
+  369  rm -rf 0320.txt 
+  370  ls
+  371  poweroff
+  372  /etc/grub.conf
+  373  grup
+  374  who -r
+  375  /etc/rc3.d/
+  376  ls /etc/init.d
+  377  cat /etc/init.d/functions 
+  378  systemctl -;
+  379  systemctl -l
+  380  systemctl -l -t soket
+  381  systemctl -l -t socket
+  382  systemctl -t service
+  383  systemctl -t service -a
+  384  systemctl -t service -a -h
+  385  cat /etc/resolv.conf
+  386  ls /boot/
+  387  ps -ef | more
+  388  clear
+  389  rpm --query httpd
+  390  systemctl status httpd
+  391  systemctl start httpd
+  392  systemctl status httpd
+  393  clear
+  394  curl http://localhost
+  395  cd /var/www/html/
+  396  ls
+  397  vi index.html
+  398  curl http://localhost
+  399  firewall-cmd --add-service=http
+  400  firewall-cmd --list-all
+  401  firewall-cmd --list-service
+  402  vi index.html
+  403  curl http://localhost
+  404  ps -ef | grep firewall
+  405  curl http://192.168.10.3
+  406  ls /boot/grub2/grub.cfg 
+  407  cat /boot/grub2/grub.cfg 
+  408  cat /boot/grub2/grub.cfg  | grep DO
+  409  ls
+  410  cd ~
+  411  ls
+  412  vi .bashrc 
+  413  ls
+  414  ll 
+  415  ll -a
+  416  vi .bash_profile 
+  417  vi .vimrc
+  418  cat --help
+  419  cat -n /boot/grub2/grub.cfg 
+  420  more /boot/grub2/grub.cfg 
+  421  grup
+  422  grub
+  423  grub2
+  424  systemctl status firewall
+  425  systemctl status firewalld
+  426  systemctl stop firewalld
+  427  systemctl is-active firewalld
+  428  systemctl is-enabled firewalld
+  429  ftp
+  430  systemctl status vsftpd
+  431  rpm --query vsftpd
+  432  systemctl start vsftpd
+  433  ftp
+  434  systemctl status vsftpd
+  435  systemctl is-active vsftpd
+  436  ifconfig
+  437  systemctl enable vsftpd
+  438  systemctl is-enable vsftpd
+  439  systemctl is-enabled vsftpd
+  440  systemctl status vsftpd
+  441  yum -y install telnet-server
+  442  telnet
+  443  telnet-server
+  444  systemctl status telnet
+  445  systemctl status xinetd
+  446  systemctl status -t service
+  447  clear
+  448  systemctl status telnet
+  449  systemctl status telnet.socket
+  450  systemctl start telnet.socket
+  451  rpm --query --list telnet-server
+  452  systemctl status telnet.socket
+  453  systemctl status vsftpd
+  454  ps -ef | grep telnetd
+  455  systemctl start httpd
+  456  systemctl status httpd
+  457  cd /etc/httpd/conf 
+  458  cat httpd.conf 
+  459  vim httpd.conf 
+  460  curl http://localhost
+  461  grep index ./httpd.conf 
+  462  vim httpd.conf 
+  463  find / -name runlevel0.target
+  464  who -r
+  465  systemctl get-default
+  466  systemctl isolate runlevel2.target
+  467  who -r
+  468  systemctl isolate multi-user.target
+  469  systemctl -t target | more
+  470  systemctl -t target
+  471  systemctl list-dependencies 
+  472  systemctl list-dependencies | grep targer
+  473  systemctl list-dependencies | grep target
+  474  whereis telinit
+  475  ll /usr/sbin/telinit 
+  476  ll
+  477  man shutdown
+  478  shutdown -r +8
+  479  shutdown -r +8 "곧 서버가 재부팅 됩니다."
+  480  shutdown -c "canceled"
+  481  clear
+  482  ps -ef | more
+  483  ls
+  484  echo $PS1
+  485  usermod --password=centos root
+  486  head -n 1 /etc/shadow
+  487  init 5
+  488  init 3
+  489  getenforce
+  490  ls -Z /etc/shadow
+  491  vim /etc/fstab
+  492  df -h
+  493  mkdir /mnt/d2p2
+  494  mount -a
+  495  mkdir /mnt/d2p3
+  496  mount -a
+  497  rm -rf /mnt/d2p2
+  498  reboot
+  499  vi /etc/fstab
+  500  reboot
+  501  ls
+  502  pstree
+  503  pstree |grep bash
+  504  yum list bind
+  505  yum search dns
+  506  whereis ping
+  507  cp /dev/null usr/bin/ping
+  508  cp /dev/null /usr/bin/ping
+  509  ping localhost
+  510  yum search ping
+  511  yum list ping
+  512  yum search ping
+  513  yum providsping
+  514  yum provides ping
+  515  whereis ping
+  516  yum install inputils
+  517  yum reinstall inputils
+  518  yum reinstall iputils
+  519  man yum
+  520  yum erage httpd
+  521  man yum
+  522  yum erase telnet-server
+  523  yum install telnet-server
+  524  cat /etc/yum.conf
+  525  cd /var/cache/yum/
+  526  ls
+  527  cd x86_64/
+  528  ls
+  529  cd 7
+  530  ls
+  531  cd base/
+  532  cd packages/
+  533  ls
+  534  ls telnet-server-0.17-64.el7.x86_64.rpm 
+  535  yum localinstall telnet-server-0.17-64.el7.x86_64.rpm 
+  536  rpm -q httpd
+  537  yum list telnet-server
+  538  yum list telnet
+  539  rm -rf /tmp/test
+  540  ls
+  541  vi /etc/hosts
+  542  wget http://mirror.navercorp.com/apache/httpd/httpd-2.4.41.tar.gz
+  543  ls
+  544  ll
+  545  ll -h
+  546  cp httpd-2.4.41.tar.gz /tmp/.
+  547  l
+  548  ls
+  549  dnf
+  550  ls
+  551  cd /tmp/
+  552  ls
+  553  cd tet
+  554  cd test
+  555  ls
+  556  file httpd-2.4.41
+  557  ll
+  558  ls
+  559  tar -t httpd-2.4.41.tar.gz 
+  560  cd httpd-2.4.41/
+  561  ls
+  562  find . -name '*.c'
+  563  clear
+  564  rmp --query httpd
+  565  rpm --query httpd
+  566  df -h
+  567  cd
+  568  ls
+  569  cd /m
+  570  cd /mnt/
+  571  mkdir cdrom
+  572  mount /dev/cdrom /mnt/cdrom/
+  573  d f-h
+  574  df -h
+  575  cd /mnt/cdrom/
+  576  ls
+  577  cd Packages/
+  578  ls
+  579  ls |wc -l
+  580  ls |wc
+  581  ls |wc -l
+  582  rpm --query --all | wc -l
+  583  ls httpd*
+  584  rpm --query httpd
+  585  rpm --query ftpd
+  586  rpm --query ftp
+  587  rmp --query --all | grep ftp
+  588  rtp --query --all | grep -i ftp
+  589  rpm --query --all | grep -i ftp
+  590  rpm --query --vsftpd
+  591  rpm --query vsftpd
+  592  whereis compress
+  593  rm /usr/bin/compress 
+  594  whereis compress
+  595  yum -y install compress
+  596  ls -al | grep compress
+  597  man rpm
+  598  rpm -i --force ncompress-4.2.4.4-3.el7.x86_64.rpm 
+  599  whereis compress
+  600  man rpm
+  601  rpm --query --file /usr/bin/compress
+  602  ll | grep ncom
+  603  whereis compress
+  604  rpm -q -l ncompress
+  605  yum -y install ncompress
+  606  yum -y -u install ncompress
+  607  yum -y check-update install ncompress
+  608  yum -y update ncompress
+  609  cd .e
+  610  cd /etc/
+  611  yum
+  612  man yum
+  613  yum list telnet-server
+  614  yum list | wc -c
+  615  yum list | wc -l
+  616  yum list installed
+  617  yum list upgraded
+  618  yum list bash
+  619  yum update bash
+  620  bash
+  621  yum list yum
+  622  yum update yum
+  623  yum list yum
+  624  yum grouplist
+  625  yum list httpd
+  626  yum update httpd
+  627  yum list httpd
+  628  yum grouplist hidden
+  629  yum info httpd
+  630  yum groupinfo 웹서버
+  631  yum groupinfo "웹 서버"
+  632  yum groupinstall "웹 서버"
+  633  yum groupinfo "웹 서버"
+  634  yum groupremove "웹 서버"
+  635  yum groupinfo "웹 서버"
+  636  yum -e httpd
+  637  yum remove httpd
+  638  yum groupinfo "웹 서버"
+  639  man yum
+  640  yum groupinstall "웹 서버" --setopt=group_package_types=mandatory,default,optional
+  641  yum groupinfo "웹 서버"
+  642  yum grouplist "웹 서버"
+  643  yum grouplist hidden "웹 서버"
+  644  man yum
+  645  yum grouplist hidden
+  646  yum groupinfo "웹 서버"
+  647  yum history info
+  648  yum history
+  649  yum history info 7
+  650  yum -y install tftp-server
+  651  yum -y install finger-server
+  652  yum -y install finger
+  653  yum history
+  654  yum remove finger-server
+  655  yum history
+  656  yum history info
+  657  yum history info 17
+  658  yum history undo 17
+  659  yum history info
+  660  yum history
+  661  yum history undo 18
+  662  cd /etc/yum.repos.d/
+  663  ls
+  664  vi CentOS-Base.repo 
+  665  cd ..
+  666  cp -r yum.repos.d yum.repos.d.orig
+  667  ls
+  668  cd yum.repos.d
+  669  ls
+  670  rm -rf *
+  671  ls
+  672  yum install tftp
+  673  ls
+  674  cd ..
+  675  df -h
+  676  umount /dev/sr0
+  677  cd /var/www/ftml
+  678  cd /var/www/html
+  679  mkdirmkdir pkg
+  680  mkdir pkg
+  681  cd pkg/
+  682  ls
+  683  mkdir dvd
+  684  mount /dev/cdrom dvd
+  685  df -h
+  686  rpm -q createrepo
+  687  df - /dev/sr0 
+  688  createrepo .
+  689  ls
+  690  systemctl stop firewall
+  691  systemctl start httpd
+  692  systemctl stop firewalld
+  693  vi /etc/httpd/conf/httpd.conf
+  694  cd /var/www/html/pkg
+  695  createrepo .
+  696  curl http://localhost
+  697  cd /etc/yum.repos.d
+  698  yum list
+  699  yum clean all
+  700  vi centos7.repo
+  701  yum repolist
+  702  ls -Z /etc/shadow
+  703  getenforce
+  704  setenforce 0
+  705  getenforce
+  706  ls -Z /etc/shadow
+  707  yum repolist
+  708  df -h
+  709  cd /var/www/html/pkg/dvd/
+  710  ls
+  711  cd -
+  712  cd /var/www/html/pkg/repodata/
+  713  ls
+  714  cd ..
+  715  ls
+  716  yum repolist
+  717  ls
+  718  cd dvd/
+  719  ls
+  720  cd Packages/
+  721  ls
+  722  cd ..
+  723  vi centos7.repo
+  724  cd /etc/yum.repos.d
+  725  ls
+  726  vi centos7.repo 
+  727  history
+  728  yum repolist
+  729  vi centos7.repo 
+  730  yum repolist
+  731  yum clean all
+  732  yum repolist
+  733  vi centos7.repo 
+  734  cd /etc/yum.repos.d
+  735  la
+  736  ls
+  737  cd ..
+  738  /etc/
+  739  ls
+  740  cd /
+  741  yum groupremove "웹 서버"
+  742  cd /etc/
+  743  ls
+  744  rm -r yum.repos.d
+  745  mv yum.repos.d.orig yum.repos.d
+  746  cd yum.repos.d/
+  747  ls
+  748  cd ..
+  749  cd /
+  750  yum groupremove "웹 서버"
+  751  yum groupinstall "웹 서버"
+  752  yum grouplist
+  753  yum groupinfo "웹 서버"
+  754  systemctl start httpd
+  755  systemctl restart httpd
+  756  ls
+  757  cd /etc/yum.repos.d/
+  758  ls
+  759  cd ..
+  760  cp yum.repos.d yum.repos.d.orig
+  761  cp -r yum.repos.d yum.repos.d.orig
+  762  yum clear list
+  763  cd yum.repos.d
+  764  ls
+  765  rm -rf *
+  766  vi centos7.repo
+  767  cd /etc/yum.repos.d
+  768  yum repolist
+  769  cat centos7.repo
+  770  cd /var/www/html/
+  771  ls
+  772  cd pkg/
+  773  ls
+  774  cd dvd/
+  775  ls
+  776  cd ..
+  777  history
+  778  history | grep create
+  779  history
+  780  hostname
+  781  ll
+  782  cd dvd/
+  783  ls
+  784  rm -rf repodata/
+  785  mount -o remount,rw /dev/sr0 
+  786  df -h
+  787  setenforce 1
+  788  getenforce
+  789  yum repolist
+  790  cp /etc/yum.repos.d.orig/CentOS-Base.repo /etc/yum.repos.d/.
+  791  cd /etc/yum.repos.d
+  792  ls
+  793  vi centos7.repo 
+  794  yum repolist
+  795  yum repolist all
+  796  yum clean all
+  797  yum updated kernel
+  798  yum list kernel
+  799   yum update kernel
+  800  bg
+  801  uname -r
+  802  reboot
+  803  uname -r
+  804  vi /boot/grub2/grub.cfg 
+  805  vi /etc/grup2.cfg
+  806  vi /etc/grub2.cfg 
+  807  yum list kernel
+  808  cd /boot/
+  809  cd grub2/
+  810  vi grub.cfg 
+  811  nmcli
+  812  nmtui
+  813  mntui
+  814  nmtuid
+  815  nmtui
+  816  ls
+  817  ping naver.com
+  818  ping google.com
+  819  systemctl poweroff
+  820  ls
+  821  df -h
+  822  ls
+  823  cd
+  824  cd /
+  825  ls
+  826  cd mnt/
+  827  ls
+  828  mount /dev/sr0 cdrom/
+  829  yum grouplist
+  830  vi /etc/yum.repos.d/CentOS-Base.repo 
+  831  yum repolist
+  832  yum repolist hidden
+  833  yum repolist all
+  834  yum clear all
+  835  yum clean all
+  836  yum repolist all
+  837  yum grouplist
+  838  ls
+  839  vi /etc/yum.repos.d/CentOS-Base.repo 
+  840  yum repolist
+  841  yum repolist all
+  842  yum clean all
+  843  yum repolist all
+  844  systemctl reboot
+  845  ls
+  846  cd /
+  847  yum remove kernel
+  848  ls
+  849  yum info kernel
+  850  yum kernel
+  851  yum list kernel
+  852  vi /etc/grub2.cfg 
+  853  systemctl reboot
+  854  yum install kernel
+  855  reboot
+  856  ls
+  857  cd /
+  858  grep enable /etc/yum.conf 
+  859  grep gp /etc/yum.conf 
+  860  yum update
+  861  ls
+  862  yum list ntfs
+  863  yum list mariadb
+  864  yum repolist
+  865  yum install epel-release
+  866  yum repolist
+  867  yum repolist all
+  868  yum list ansible
+  869  yum list mariadb
+  870  yum install remi
+  871  wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+  872  yum repolist all
+  873  yum install remi-release
+  874  rpm -Uvh http://mirror.premi.st/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+  875  wget http://remi.mirrors.arminco.com/
+  876  yum install remi-release
+  877  yum install remi
+  878  yum list remi
+  879  yum list remi-release
+  880  rpm -ivh http://rons,famillecollet.com/enterpise/remi-release-7.rpm
+  881  rpm -ivh http://rons.famillecollet.com/enterpise/remi-release-7.rpm
+  882  rpm -ivh http://rpms.famillecollet.com/enterpise/remi-release-7.rpm
+  883  rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+  884  yum repolist
+  885  yum list
+  886  yum list mariadb
+  887  yum repolist all
+  888  yum list php
+  889  vim /etc/yum.repos.d
+  890  vim /etc/yum.repos.d/remi-php74.repo 
+  891  yum repolist
+  892  yum list mariadb
+  893  yum list php
+  894  yum repolist all
+  895  yum list gcc
+  896  rpm -qa | grep gcc
+  897  ls
+  898  ㅣㄴ
+  899  ls
+  900  yum remove epel
+  901  ls
+  902  cd /etc/
+  903  ls
+  904  cd yum.repos.d
+  905  ls
+  906  yum remove epel-release
+  907  ls
+  908  rm remi-php74.repo.rpmsave 
+  909  ls
+  910  cd ..
+  911  ls
+  912  cp yum.repos.d.orig/* yum.repos.d/.
+  913  rpm -q vsftp
+  914  rpm -q vsftpd
+  915  pgrep -fl vsftpd
+  916  systemctl stop vsftpd
+  917  systemctl is-active vsftpd
+  918  yum list proftpd
+  919  wget ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.6c.tar.gz
+  920  ls
+  921  grep ft
+  922  grep gz
+  923  grep .gz
+  924  tar -tf proftpd-1.3.6c.tar.gz 
+  925  cp proftpd-1.3.6c.tar.gz /tmp/.
+  926  rm -rf proftpd-1.3.6c.tar.gz 
+  927  cd /tmp/
+  928  ls
+  929  tar -zxvf proftpd-1.3.6c.tar.gz 
+  930  cd proftpd-1.3.6c/
+  931  ls
+  932  install-sh
+  933  ./configure 
+  934  ls
+  935  vi makefile
+  936  vi Makefile
+  937  vi configure
+  938  ./configure --prefix=/usr/local/proftpd
+  939  ls
+  940  make
+  941  httpd
+  942  httpd -v
+  943  systemclt stauts httpd
+  944  systemctl stauts httpd
+  945  systemctl status httpd
+  946  cd /usr/local/httpd/
+  947  ls
+  948  cd
+  949  df -h
+  950  ls
+  951  fdisk /dev/sdc
+  952  mkdir data1
+  953  mkfs.xfs /dev/sdc1
+  954  mkfs.xfs /dev/sdc1 -f
+  955  mount /dev/sdc1 /data1
+  956  cp /etc/*.conf /data1
+  957  df -h
+  958  mount /dev/sdc1 /data1
+  959  ls
+  960  cd /
+  961  ls
+  962  mkdir data1
+  963  mount /dev/sdc1 /data1
+  964  cp /etc/*.conf /data1
+  965  cd /data1/
+  966  ls
+  967  cd ..
+  968  cd
+  969  ls
+  970  rm -rf data1/
+  971  cd /
+  972  ls
+  973  cd /data1/
+  974  ls
+  975  vi yum.conf 
+  976  ls
+  977  vi yum.conf 
+  978  ls
+  979  cd 
+  980  cd /
+  981  ls
+  982  ls backup 
+  983  vim .bashrc
+  984  cd /home/
+  985  ls
+  986  fdisk /dev/sdd
+  987  mkfs.ext4 /dev/sdd1
+  988  ls
+  989  cd ..
+  990  ls
+  991  mount /dev/sdd1 /backup 
+  992  mount /dev/sdd1 /backup
+  993  mount /dev/sdd1 /backup/
+  994  ls
+  995  mkdir backup
+  996  mount /dev/sdd1 /backup
+  997  ls
+  998  rm -rf /backup 
+  999  mkdir /backup
+ 1000  mount /dev/sdd1 /backup/
+ 1001  df -h
+ 1002  umount /dev/sdd1
+ 1003  fdisk /dev/sdd
+ 1004  mkfs.ext4 /dev/sdd1
+ 1005  mount /dev/sdd1 /backup/
+ 1006  ls
+ 1007  df -h
+ 1008  cd /home/
+ 1009  tar -cvf /backup/home.full.tar ./*
+ 1010  ls
+ 1011  df -
+ 1012  df -h
+ 1013  cd /backup/
+ 1014  tar -cvf home2.tar /home/*
+ 1015  ls
+ 1016  tar -tf home2.tar  
+ 1017  tar -tf home.full.tar 
+ 1018  tar -cvf home3.tar -P /home/*
+ 1019  tar -tf home3.tar 
+ 1020  ls -alh
+ 1021  ls -al
+ 1022  cd ..
+ 1023  cd backup/
+ 1024  rm -rf *
+ 1025  ls
+ 1026  cd ..
+ 1027  ls
+ 1028  cd /home/
+ 1029  l
+ 1030  ls
+ 1031  tar -cvf /backup/home.tar *
+ 1032  tar -tf /backup/home.tar 
+ 1033  rm -rf *
+ 1034  su - ms
+ 1035  tar -xvf /backup/home.tar .
+ 1036  tar -xvf /backup/home.tar ./*
+ 1037  tar -xvf /backup/home.tar
+ 1038  ls
+ 1039  tar -cvfP /backup/home2.tar /home/*
+ 1040  ls
+ 1041  ls /backup/
+ 1042  tar -cvf /backup/home2.tar /home/* -P
+ 1043  ls /backup/
+ 1044  ls
+ 1045  rm -rf *
+ 1046  ls
+ 1047  tar -xvf /backup/home2.tar 
+ 1048  ls
+ 1049  ls /backup/home2.tar 
+ 1050  cd home/
+ 1051  ls
+ 1052  vi P
+ 1053  ls P
+ 1054  ll P
+ 1055  df -h
+ 1056  ls
+ 1057  rm -rf *
+ 1058  cd ..
+ 1059  rm -rf *
+ 1060  cd .
+ 1061  cd ..
+ 1062  tar -xvf /backup/home2.tar 
+ 1063  ls
+ 1064  cd home/
+ 1065  ls
+ 1066  tar -tf /backup/home2.tar 
+ 1067  ls
+ 1068  rm -rf *
+ 1069  tar -xvf /backup/home2.tar -P
+ 1070  ls
+ 1071  rm -rf *
+ 1072  ls
+ 1073  tar -xvf /backup/home2.tar -P
+ 1074  ls
+ 1075  rm -rf *
+ 1076  tar -xvf /backup/home2.tar -P
+ 1077  ls
+ 1078  tar -cvf /backup/home3.tar /home/*
+ 1079  ls
+ 1080  tar -tf /backup/home3.tar 
+ 1081  ls
+ 1082  rm -rf *
+ 1083  ls
+ 1084  tar -xvf /backup/home3.tar 
+ 1085  ls
+ 1086  cd home/
+ 1087  ls
+ 1088  cd ..
+ 1089  rm -rf *
+ 1090  cd ..
+ 1091  tar -cvf /backup/home3.tar 
+ 1092  tar -xvf /backup/home3.tar 
+ 1093  ls
+ 1094  cd home/
+ 1095  ls
+ 1096  rm -rf /backup/*
+ 1097  crontab -e
+ 1098  tar -cvf /backup/home.full.03261157 /home/*
+ 1099  ls /backup/
+ 1100  useradd guser1
+ 1101  useradd guser2
+ 1102  echo test >> user2/.bashrc
+ 1103  rm /backup/*
+ 1104  ls /b
+ 1105  ls /backup/
+ 1106  ls
+ 1107  tar -g /backup/home.backup.list -cvf /backup/home.full.03261203.tar *
+ 1108  ls
+ 1109  cd /backup
+ 1110  ls
+ 1111  stat user1/.bashrc
+ 1112  cd /home/
+ 1113  stat user1/.bashrc
+ 1114  ll
+ 1115  stat user1/.bashrc
+ 1116  useradd guesr3
+ 1117  useradd guesr4
+ 1118  touch a.txt b.txt
+ 1119  echo test >> user2/.bashrc
+ 1120  cat /backup/home.backup.list 
+ 1121  ls
+ 1122  tar -g /backup/home.backup.list -cvf /backup/home2.03261212.tar *
+ 1123  ls
+ 1124  tar -tf /backup/home2.03261212.tar | grep a
+ 1125  tar -tf /backup/home2.03261212.tar | grep a.txt
+ 1126  tar -tf /backup/home.full.03261203.tar | grep a.txt
+ 1127  useradd guser5
+ 1128  touch c.txt
+ 1129  tar -g /backup/home.backup.list -cvf /backup/home3.03261214.tar *
+ 1130  ls
+ 1131  ll /backup/
+ 1132  ll -h /backup/
+ 1133  tar -tf /backup/home2.03261212.tar
+ 1134  tar -tf /backup/home2.03261212.tar | grep txt
+ 1135  tar -tf /backup/home3.03261214.tar | grep txt
+ 1136  ls
+ 1137  ls /backup/
+ 1138  tar -g /backup/home.backup.list2 -cvf /backup/home4.full.03261246.tar *
+ 1139  ls
+ 1140  ls /backup/
+ 1141  ls
+ 1142  rm -rf /backup/*
+ 1143  ls /backup/
+ 1144  ls
+ 1145  rm -rf *.txt
+ 1146  ls
+ 1147  cd /usr/share/man
+ 1148  ls
+ 1149  tar -g list -cvf /backup/man.full.2003261300.tar *
+ 1150  ls /backup/
+ 1151  ls
+ 1152  mv list /backup/.
+ 1153  ls
+ 1154  ls /backup/
+ 1155  tar -tf /backup/man.full.2003261300.tar
+ 1156  yum install libvirt-daemon-kvm
+ 1157  rpm -ql libvirt-daemon-kvm
+ 1158  tar -g /backup/list -cvf /backup/man.inc.2003261307.tar *
+ 1159  ls /backup/
+ 1160  tar -tf /backup/man.inc.2003261307.tar 
+ 1161  ll /backup/
+ 1162  ll -h /backup/
+ 1163  rm -rf *
+ 1164  ls
+ 1165  man ls
+ 1166  tar -xvf /backup/man.full.2003261300.tar
+ 1167  ls
+ 1168  tar -xvf /backup/man.inc.2003261307.tar 
+ 1169  rm -rf *
+ 1170  tar -xvf /backup/man.full.2003261300.tar
+ 1171  find . -name "virsh"
+ 1172  tar -xvf /backup/man.inc.2003261307.tar 
+ 1173  find . -name "virsh"
+ 1174  find / -name "virsh"
+ 1175  ls
+ 1176  cd man
+ 1177  ls
+ 1178  cd ma1
+ 1179  cd man1
+ 1180  ls
+ 1181  find . -name "virsh"
+ 1182  find . -name "virsh*"
+ 1183  cd ..
+ 1184  rm -rf *
+ 1185  ls
+ 1186  tar -xvf /backup/man.full.2003261300.tar
+ 1187  find . -name "virsh*"
+ 1188  tar -xvf /backup/man.inc.2003261307.tar 
+ 1189  find . -name "vir*"
+ 1190  rm -rf *
+ 1191  tar -xvf /backup/man.full.2003261300.tar
+ 1192  find . -name "vir*"
+ 1193  tar -xvf /backup/man.inc.2003261307.tar 
+ 1194  find . -name "vir*"
+ 1195  rm -rf *
+ 1196  tar -xvf /backup/man.full.2003261300.tar
+ 1197  find . -name "vir*"
+ 1198  tar -xvf /backup/man.inc.2003261307.tar 
+ 1199  rm -rf *
+ 1200  tar -xvf /backup/man.inc.2003261307.tar 
+ 1201  ls
+ 1202  find . -name "vir*"
+ 1203  ls
+ 1204  cd man1
+ 1205  ls
+ 1206  rm -rf *
+ 1207  cd ..
+ 1208  rm -rf *
+ 1209  tar -xvf /backup/man.full.2003261300.tar
+ 1210  find . -name "vir*"
+ 1211  tar -tf /backup/man.full.2003261300.tar | grep vir
+ 1212  ls
+ 1213  umount /data1
+ 1214  lsof /data1
+ 1215  fdisk /dev/sdc
+ 1216  fdisk /dev/sdc
+ 1217  partprobe /dev/sdc2
+ 1218  partprobe
+ 1219  df -h
+ 1220  cd ..
+ 1221  ls /dev/sdc*
+ 1222  ls
+ 1223  msfs.ext4 /dev/sdc2
+ 1224  mkfs.ext4 /dev/sdc2
+ 1225  ls
+ 1226  mkdir data2
+ 1227  ls
+ 1228  mount /dev/sdc2 /data2
+ 1229  df -h
+ 1230  ls
+ 1231  cd /
+ 1232  cd /sbin/
+ 1233  vi backup
+ 1234  ls
+ 1235  ll backup 
+ 1236  chmod 744 backup
+ 1237  ll /backup/
+ 1238  rm -rf /backup/*
+ 1239  ./backup 
+ 1240  ls
+ 1241  vi backup
+ 1242  ll backup 
+ 1243  ll /backup/
+ 1244  rm -rf /backup/*
+ 1245  history
+ 1246  ii=$(date +"%m%d"); history > ii.txt
+ 1247  ls
+ 1248  ii=$(date +"%m%d"); history > $ii.txt
+ 1249  ls
+ 1250  cat 0324root.txt 
+ 1251  rm -rf 0324root.txt 
+ 1252  rm -rf 0325root.txt 
+ 1253  cat 0326.txt
+ 1254  tabcron -e
+ 1255  crontab -e
+ 1256  ls
+ 1257  vi history.sh 
+ 1258  ./history.sh
+ 1259  ls
+ 1260  rm 0326.txt 
+ 1261  cat 0326root.txt 
+ 1262  vi history.sh 
+ 1263  ./history.sh
+ 1264  vi history.sh 
+ 1265  ls
+ 1266  rm 0326root.txt 
+ 1267  ls
+ 1268  rm -rf ii.txt 
+ 1269  ./history.sh
+ 1270  ls
+ 1271  cat 0326root.txt 
+ 1272  rm 0326root.txt 
+ 1273  ./history.sh
+ 1274  vi history.sh
+ 1275  ls
+ 1276  rm 0326root.txt 
+ 1277  ./history.sh
+ 1278  vi history.sh 
+ 1279  ./history.sh 
+ 1280  ll
+ 1281  ls
+ 1282  cat 0326root.txt 
+ 1283  ;s
+ 1284  ls
+ 1285  cd /
+ 1286  ls
+ 1287  cd
+ 1288  ls
+ 1289  crontab -e
+ 1290  vi /etc/crontab 
+ 1291  crontab -e
+ 1292  vi /etc/crontab 
+ 1293  crontab -e
+ 1294  vi /etc/crontab 
+ 1295  vi /sbin/backup2
+ 1296  vi /sbin/backup
+ 1297  vi /sbin/backup2
+ 1298  chmod 744 /sbin/backup2
+ 1299  /sbin/backup2
+ 1300  rm -rf /backup/*
+ 1301  /sbin/backup
+ 1302  /sbin/backup2
+ 1303  ls
+ 1304  vi /etc/crontab 
+ 1305  poweroff
+ 1306  cd /
+ 1307  df -h
+ 1308  partprobe
+ 1309  ls /dev/
+ 1310  df -h
+ 1311  poweroff
+ 1312  ls
+ 1313  cd
+ 1314  ls
+ 1315  alias
+ 1316  ls
+ 1317  vi .bashrc
+ 1318  ailas ls='ls --color=auto'
+ 1319  alias ls='ls --color=auto'
+ 1320  ls
+ 1321  vi /etc/fstab
+ 1322  ls
+ 1323  crontab -e
+ 1324  vi history.sh 
+ 1325  ./history.sh 
+ 1326  cd /mnt/
+ 1327  ls
+ 1328  cd cdrom/
+ 1329  ls
+ 1330  mount /dev/cdrom /mnt/cdrom/
+ 1331  ls
+ 1332  ls -al
+ 1333  cd ..
+ 1334  ls
+ 1335  ll
+ 1336  cd ..
+ 1337  ls
+ 1338  cd backup/
+ 1339  ls
+ 1340  cd /sbin/
+ 1341  ls
+ 1342  ./backup
+ 1343  lls
+ 1344  cd /home/
+ 1345  cd ..
+ 1346  ls
+ 1347  cd backup/
+ 1348  ls
+ 1349  scp home.full.202003261547.tar root@192.168.10.5:/
+ 1350  tar -tf home.full.202003261547.tar | grep user
+ 1351  ;s
+ 1352  ls
+ 1353  scp /etc/passwd root@192.168.10.5:/
+ 1354  scp /etc/shadow root@192.168.10.5:/
+ 1355  scp /etc/group root@192.168.10.5:/
+ 1356  df -h
+ 1357  cd /mnt/cdrom
+ 1358  lks
+ 1359  ls
+ 1360  cp VMwareTools-10.3.2-9925305.tar.gz /root/
+ 1361  cd
+ 1362  ls
+ 1363  tar -tf VMwareTools-10.3.2-9925305.tar.gz 
+ 1364  tar -xvf VMwareTools-10.3.2-9925305.tar.gz 
+ 1365  ls
+ 1366  cd vmware-tools-distrib/
+ 1367  ls
+ 1368  vi INSTALL 
+ 1369  ./vmware-install.pl 
+ 1370  cd /mnt/hgfs/
+ 1371  ls
+ 1372  cd
+ 1373  ls
+ 1374  cd vmware-tools-distrib/
+ 1375  ls
+ 1376  ./vmware-install.pl 
+ 1377  ls
+ 1378  cd ..
+ 1379  cd mnt
+ 1380  cd /mnt/
+ 1381  ls
+ 1382  cd hgfs/
+ 1383  ls
+ 1384  cd share/
+ 1385  ls
+ 1386  df -h
+ 1387  alias
+ 1388  ls
+ 1389  df -h
+ 1390  blkid vmhgfs-fuse
+ 1391  blkid /mnt/hgfs
+ 1392  blkid /dev/sdc
+ 1393  blkid /dev/sdc1
+ 1394  fdisk vmhgfs-fus
+ 1395  fdisk vmhgfs-fuse
+ 1396  fdisk -l vmhgfs-fuse
+ 1397  ls
+ 1398  pwd
+ 1399  reboot
+ 1400  fdisk -l /dev/sdf
+ 1401  dd if=/dev/sdb of=/dev/sdf bs=1M status=progress
+ 1402  ls
+ 1403  alias
+ 1404  vi /etc/aliases
+ 1405  mkdir /mnt/newhome
+ 1406  mount /dev/sdf1 /mnt/newhome/
+ 1407  ls
+ 1408  ls /dev/sdf?
+ 1409  vi .bashrc
+ 1410  vi .bash_profile 
+ 1411  alias
+ 1412  vi .bashrc
+ 1413  ls
+ 1414  souce .bashrc 
+ 1415  source .bashrc 
+ 1416  df -h
+ 1417  ls
+ 1418  cd /mnt/
+ 1419  cd newhome/
+ 1420  ls
+ 1421  cd..
+ 1422  cd ..
+ 1423  ls
+ 1424  cd newhome/
+ 1425  ls
+ 1426  rm -rf *
+ 1427  cd ..
+ 1428  ls
+ 1429  df -h
+ 1430  umount /dev/sdf1
+ 1431  ls
+ 1432  rm -rf newhome/
+ 1433  ls
+ 1434  cd ..
+ 1435  ls
+ 1436  mkdir usb_backup
+ 1437  dd if=dev/sdb of=usb_backup/sdb_img bs=1M status=progress
+ 1438  ls
+ 1439  cd usb_backup/
+ 1440  ls
+ 1441  ll
+ 1442  ll -h
+ 1443  file sdb_img
+ 1444  ls
+ 1445  scp ./sdb_img root@server2:/
+ 1446  ls
+ 1447  vg
+ 1448  vgs
+ 1449  psv
+ 1450  pvs
+ 1451  df -h
+ 1452  fdisk /dev/sdc -l
+ 1453  fdisk /dev/sdc
+ 1454  quota -u
+ 1455  quota
+ 1456  mdadm --detail --scan
+ 1457  cat /proc/mdstat
+ 1458  fdisk /dev/sdc
+ 1459  mdadm --create /dev/md0 --level=0 --raid-devices=2 /dev/sdc1 /dev/sdc2
+ 1460  mdadm --detail --scan
+ 1461  cat /proc/mdstat
+ 1462  vi /etc/mdadm.conf
+ 1463  mdadm --detail --scan --brief
+ 1464  mdadm --detail --scan
+ 1465  mkfs.xfs /dev/md0
+ 1466  ls
+ 1467  cd
+ 1468  cd /
+ 1469  ls
+ 1470  mkdir test
+ 1471  ls
+ 1472  mount /dev/md0 /test
+ 1473  df -h
+ 1474  cd /test/
+ 1475  ls
+ 1476  cd ..
+ 1477  mdadm --stop /dev/md0
+ 1478  umount /test
+ 1479  mdadm --stop /dev/md0
+ 1480  mdadm --detail --scan
+ 1481  mdadm --detail --scan /dev/md0
+ 1482  mdadm --examine /dev/sdc1
+ 1483  mdadm --examine /dev/sdc2
+ 1484  mdadm --zero-superblock /dev/sdc{1..2}
+ 1485  mdadm --examine /dev/sdc2
+ 1486  mdadm --examine /dev/sdc1
+ 1487  fdisk /dev/sdc
+ 1488  mdadm --create /dev/md5 --level=5 --raid-devices=3 /dev/sdc1 /dev/sdc2 /dev/sdc3
+ 1489  mdadm --detail --scan
+ 1490  cat /proc/mdstat 
+ 1491  mdadm --fail /dev/sdc2
+ 1492  cat /proc/mdstat 
+ 1493  mdadm --fail /dev/sdc2
+ 1494  mdadm --manage /dev/md5 --fail /dev/sdc3
+ 1495  cat /proc/mdstat 
+ 1496  fdisk /dev/sdd
+ 1497  mdadm --manage --add /dev/sdd1
+ 1498  cat /proc/mdstat 
+ 1499  mdadm --manage /dev/md5 --add /dev/sdd1
+ 1500  cat /proc/mdstat 
+ 1501  mdadm --manage /dev/md5 --remove /dev/sdc3
+ 1502  cat /proc/mdstat 
+ 1503  mdadm --stop
+ 1504  mdadm --stop /dev/md5
+ 1505  mdadm --detail --scan
+ 1506  mdadm --examine /dev/sdc1
+ 1507  mdadm --examine /dev/sdc2
+ 1508  mdadm --examine /dev/sdc3
+ 1509  mdadm --zero-superblock /dev/sdc{1..3}
+ 1510  mdadm --zero-superblock /dev/sdd1
+ 1511   fdisk /dev/sdc
+ 1512  pvcreate /dev/sdc1 /dev/sdc2 /dev/sdc3
+ 1513  pvs
+ 1514  vgcreate test /dev/sdc1 /dev/sdc2 /dev/sdc3
+ 1515  vgs
+ 1516  lvcreate -n test_lv -l 50%VG test
+ 1517  lvs
+ 1518  vgs
+ 1519  mkfs.ext4 /dev/test/test_lv 
+ 1520  df -h
+ 1521  ls
+ 1522  lvremove /dev/test/test_lv 
+ 1523  vgremove test
+ 1524  pvs
+ 1525  pvremove /dev/sdc1 /dev/sdc2 /dev/sdc3
+ 1526  fdisk
+ 1527  ls
+ 1528  blkid
+ 1529  systemctl poweroff
+ 1530  usermod --password=centos root
+ 1531  cat /etc/shadow
+ 1532  cat /etc/shadow | grep root
+ 1533  reboot
+ 1534  pvs
+ 1535  lvs
+ 1536  gvs
+ 1537  vgs
+ 1538  pvs
+ 1539  pvcreate /dev/sdc1 /dev/sdc2
+ 1540  vgs
+ 1541  vgcreate test /dev/sdc1 /dev/sdc2
+ 1542  lvcreate -l 80%VG -n "test_lv" test
+ 1543  lvs
+ 1544  vgs
+ 1545  man vgextend
+ 1546  vgextend test /dev/sdc3
+ 1547  vgs
+ 1548  man lvext
+ 1549  man lvextend
+ 1550  lvextend -l +500M -n test_lv test
+ 1551  lvextend -l 500M -n test_lv test
+ 1552  ping 192.168.10.30
+ 1553  ls
+ 1554  hostname
+ 1555  lvextend -L +500M /dev/test/test_lv 
+ 1556  vgs
+ 1557  df -h
+ 1558  mkdir /test12
+ 1559  mount /dev/test/test_lv /test12
+ 1560  mkfs.ext4 /dev/test/test_lv 
+ 1561  mount /dev/test/test_lv /test12
+ 1562  df-h
+ 1563  df -h
+ 1564  vgs
+ 1565  lvs
+ 1566  lvextend -L +100M /dev/test/test_lv
+ 1567  df -h
+ 1568  resize2fs /dev/test/test_lv
+ 1569  df -h
+ 1570  lvremove /dev/test/test_lv 
+ 1571  umount /test12
+ 1572  lvremove /dev/test/test_lv 
+ 1573  vgs
+ 1574  vgremove test
+ 1575  pvs
+ 1576  pvremove /dev/sdc{1..3}
+ 1577  ls
+ 1578  systemctl start httpd
+ 1579  systemctl status httpd
+ 1580  ls port
+ 1581  file / -n "port"
+ 1582  ifconfig
+ 1583  nmtui
+ 1584  ls
+ 1585  ifconfig ens33
+ 1586  ifconfig ens34 150.160.10.1
+ 1587  ifconfig ens334
+ 1588  ifconfig ens34
+ 1589  ifconfig ens34 244.160.10.1
+ 1590  ifconfig ens34 224.160.10.1
+ 1591  nm-connection-editor 
+ 1592  ip a show ens34
+ 1593  nm-connection-editor 
+ 1594  nmtui-edit 
+ 1595  nm-connection-editor 
+ 1596  ip a show ens34
+ 1597  nmcli connection reload 
+ 1598  ls -alllll
+ 1599  ls -alh
+ 1600  -h
+ 1601  healer
+ 1602  heal
+ 1603  heal!
+ 1604  ss
+ 1605  man ss
+ 1606  se
+ 1607  sw
+ 1608  sa
+ 1609  s
+ 1610  man sa
+ 1611  sd
+ 1612  sf
+ 1613  sg
+ 1614  so
+ 1615  jobs
+ 1616  ps
+ 1617  ps -h
+ 1618  ps -a
+ 1619  ps -al
+ 1620  ps -l
+ 1621  ifconfig
+ 1622  ps -ef | grep Networ
+ 1623  ll
+ 1624  kk
+ 1625  jj
+ 1626  hh
+ 1627  gg
+ 1628  ff
+ 1629  dd
+ 1630  aa
+ 1631  qq
+ 1632  ww
+ 1633  ee
+ 1634  rr
+ 1635  tt
+ 1636  yy
+ 1637  u
+ 1638  uu
+ 1639  ii
+ 1640  oo
+ 1641  pp
+ 1642  zz
+ 1643  xx
+ 1644  cc
+ 1645  vv
+ 1646  bb
+ 1647  nn
+ 1648  mm
+ 1649  ss
+ 1650  ip address 
+ 1651  ip addr
+ 1652  ip
+ 1653  ip addr
+ 1654  ip addr show ens33
+ 1655  systemctl status NetworkManager
+ 1656  systemctl stop  NetworkManager
+ 1657  ls
+ 1658  systemctl status NetworkManager
+ 1659  ip addr show
+ 1660  systemctl start NetworkManager
+ 1661  systemctl enable NetworkManager
+ 1662  nmtui
+ 1663  nm-connection-editor 
+ 1664  ip routing table
+ 1665  IP routing table
+ 1666  netstat -r
+ 1667  nmcli device status 
+ 1668  nmcli device disconnect ens34
+ 1669  nmcli connection show 
+ 1670  nmcli device status 
+ 1671  nmcli connection delete ens34
+ 1672  ls
+ 1673  lsls
+ 1674  ls- ls
+ 1675  ls -ls
+ 1676  ls
+ 1677  ll
+ 1678  ls -ls
+ 1679  ls -s
+ 1680  nmcli connection add con-name "mynet" type ethernet ifname eth0
+ 1681  nmcli connection status
+ 1682  nmcli connection show
+ 1683  nmcli device status 
+ 1684  ip address show
+ 1685  nmcli connection show
+ 1686  nmcli device status
+ 1687  nmcli connection modify "mynet" ipv4.addresses 192.168.20.10/24
+ 1688  nmcli connection show
+ 1689  nmcli device status
+ 1690  ip address 
+ 1691  ip address mynet
+ 1692  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1693  nmcli connection delete mynet
+ 1694  nmcli connection add con-name "mynet" type ethernet ifname ens34
+ 1695  nmcli connection modify "mynet" ipv4.addresses 192.168.20.10/4
+ 1696  nmcli connection modify "mynet" ipv4.addresses 192.168.20.10/24
+ 1697  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1698  nmcli device status 
+ 1699  nmcli connection show
+ 1700  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1701  nmcli connection modify "mynet" ipv4.method manual
+ 1702  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1703  nmcli connection up mynet
+ 1704  nmcli connection show
+ 1705  nmcli connection modify mynet connection.autoconnectno
+ 1706  nmcli connection modify mynet connection.autoconnect no
+ 1707  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1708  nmcli connection modify mynet connection.autoconnect yes
+ 1709  ip a s ens34
+ 1710  nmcli connection show
+ 1711  netstat -r
+ 1712  netstat -nltr
+ 1713  netstat -nltp
+ 1714  netstat -nlup
+ 1715  netstat -r
+ 1716  netstat -rn
+ 1717  nmcli connection modify mynet ipv4.addresses "192.168.20.10/24 192.168.20.254"
+ 1718  nmcli connection modify mynet ipv4.addresses 192.168.20.10/24 192.168.20.254
+ 1719  nmcli connection modify mynet ipv4.addresses "192.168.20.10/24 192.168.20.254"
+ 1720  nmcli connection modify mynet gw4 192.168.20.254
+ 1721  netstat -rn
+ 1722  nmtui
+ 1723  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1724  nmcli connection up mynet
+ 1725  cat /etc/sysconfig/network-scripts/ifcfg-mynet 
+ 1726  netstat -r
+ 1727  netstat -rn
+ 1728  cat /etc/resolv.conf
+ 1729  nmcli connection modify mynet ipv4.dns 168.126.63.2
+ 1730  cat /etc/resolv.conf
+ 1731  nmcli connection up mynet
+ 1732  cat /etc/resolv.conf
+ 1733  nmcli connection modify mynet +ipv4.dns 168.126.63.3
+ 1734  nmcli connection up mynet 
+ 1735  cat /etc/resolv.conf
+ 1736  nmcli connection modify mynet -ipv4.dns 168.126.63.3
+ 1737  cat /etc/resolv.conf
+ 1738  nmcli connection up mynet 
+ 1739  cat /etc/resolv.conf
+ 1740  nmcli connection modify mynet ipv4.dns 168.126.63.3
+ 1741  nmcli connection up mynet 
+ 1742  cat /etc/resolv.conf
+ 1743  nmcli connection modify mynet ipv4.dns 168.126.63.2
+ 1744  nmcli connection up mynet 
+ 1745  cat /etc/resolv.conf
+ 1746  nmcli connection modify mynet -ipv4.dns 168.126.63.2
+ 1747  nmcli connection modify mynet -ipv4.dns 168.126.63.1
+ 1748  cat /etc/resolv.conf
+ 1749  nmcli connection up mynet 
+ 1750  cat /etc/resolv.conf
+ 1751  nmcli connection modify mynet -ipv4.dns 168.126.63.1
+ 1752  cd /etc/sysconfig/
+ 1753  cd network-scripts/
+ 1754  ls
+ 1755  vi ifcfg-mynet 
+ 1756  nmcli connection up mynet
+ 1757  ip a show ens34
+ 1758  nmcli connection reload
+ 1759  ip a show ens34
+ 1760  nmcli connection up mynet 
+ 1761  ip a show ens34
+ 1762  ls
+ 1763  ifconfig
+ 1764  setup
+ 1765  mntui
+ 1766  nmtui
+ 1767  systemctl stop NetworkManager
+ 1768  nmtui
+ 1769  systemctl start NetworkManager
+ 1770  nmtui
+ 1771  nmcli connection reload 
+ 1772  nmcli connection up mynet
+ 1773  ip a show ens34
+ 1774  poweroff
+ 1775  wireshark
+ 1776  yum list wireshark
+ 1777  whereis wireshark
+ 1778  /usr/lib64/wireshark/
+ 1779  wireshark
+ 1780  yum install wireshark-gnome
+ 1781  nmtui
+ 1782  ping server2.example.com 
+ 1783  nmtui
+ 1784  man NetworkManager
+ 1785  ls
+ 1786  netstat 
+ 1787  netstat -r
+ 1788  netstat -rn
+ 1789  ip link
+ 1790  ip -s link s ens33
+ 1791  ip -s link show ens33
+ 1792  history
+ 1793  cat /etc/resolv.conf
+ 1794  vi /etc/resolv.conf
+ 1795  tcpdump -i ens33
+ 1796  yum list wireshark
+ 1797  yum install wireshark
+ 1798  vim /etc/hosts
+ 1799  ping sh2
+ 1800  ip a s ens34
+ 1801  nmtui
+ 1802  ip a s ens34
+ 1803  nmcli connection reload 
+ 1804  ip a s 
+ 1805  ip a s ens34
+ 1806  nmcli connection show 
+ 1807  nmcli connection up mynet
+ 1808  ip a s ens34
+ 1809  ping sh2
+ 1810  arp -a
+ 1811  ping sh2
+ 1812  arp -a
+ 1813  arp -d
+ 1814  arp -d serverH2.example.com
+ 1815  ip a s ens34
+ 1816  ping google.com
+ 1817  yum list telent
+ 1818  yum list telnet-server
+ 1819  rpm -e telnet-server
+ 1820  yum install telnet-server
+ 1821  yum list telnet-server
+ 1822  telnet-server
+ 1823  telnet
+ 1824  systemctl stop firewalld
+ 1825  pgrep -i telnet
+ 1826  pgrep telnet
+ 1827  systemctl start telnet.socket
+ 1828  pgrep -fl in.telnetd
+ 1829  who
+ 1830  netstat -t
+ 1831  netstat -tnp
+ 1832  netstat -tlnp
+ 1833  ls
+ 1834  ls /home/
+ 1835  ls
+ 1836  df -h
+ 1837  ls /home/
+ 1838  cd /
+ 1839  ls
+ 1840  cd home/
+ 1841  ls
+ 1842  cd ..
+ 1843  umounnt /home/
+ 1844  unmount /home/
+ 1845  umount /home/
+ 1846  mount /dev/sdb1 /home/
+ 1847  ls /home/
+ 1848  vi /etc/fstab
+ 1849  ls
+ 1850  ls -al
+ 1851  ls
+ 1852  cd /root/
+ 1853  ls
+ 1854  vim packet.pcapng 
+ 1855  cp packet.pcapng packet.txt
+ 1856  vi packet.txt 
+ 1857  tcpdump -i packet.pcapng
+ 1858  tcpdump -d 
+ 1859  ls
+ 1860  tcpdump 
+ 1861  tcpdump ./packet.pcapng
+ 1862  vim telnet.txt
+ 1863  ls
+ 1864  vim telnet.pcapng 
+ 1865  vim test.pcapng 
+ 1866  ls
+ 1867  file test.pcapng 
+ 1868  vim test.pcapng 
+ 1869  tcpdump -d test
+ 1870  ls
+ 1871  rm -rf packet*
+ 1872  ls
+ 1873  rm -rf te*
+ 1874  ls
+ 1875  wireshark hi.pcapng 
+ 1876  man wireshark
+ 1877  wireshark -r hi.pcapng 
+ 1878  yum list tftp-server
+ 1879  rpm -q xinetd
+ 1880  yum install tftp-server
+ 1881  yum install xinetd
+ 1882  rpm install xinetd
+ 1883  rpm -q xinetd
+ 1884  rpm -ql tftp-server
+ 1885  cd /etc/xinetd.d
+ 1886  cat tftp
+ 1887  vim tftp 
+ 1888  mkdir /tftpboot
+ 1889  chmod 777 /tftpboot
+ 1890  systemctl status firewalld
+ 1891  systemctl is-active firewalld
+ 1892  cp /etc/issue /etc/hosts /tftpboot
+ 1893  getenforce
+ 1894  setenforce 0
+ 1895  getenforce
+ 1896  systemctl restart xinetd
+ 1897  systemctl stop firewalld
+ 1898  grep tftp /etc/services
+ 1899  ls
+ 1900  cd tftp
+ 1901  ls
+ 1902  cd /tftpboot/
+ 1903  ls
+ 1904  cat a.txt
+ 1905  touch a.txt
+ 1906  touch b.txt
+ 1907  touch c.txt
+ 1908  touch d.txt
+ 1909  touch e.txt
+ 1910  dd if=/dev/zero of=/tftphoot/test bs=1M count=1000
+ 1911  dd if=/dev/zero of=/tftphoot/test.txt bs=1M count=1000
+ 1912  dd if=/dev/zero of=/tftphoot/a.txt bs=1M count=1000
+ 1913  ls
+ 1914  dd if=/dev/zero of=/tftpboot/test bs=1M count=1000
+ 1915  crontab -l
+ 1916  ls
+ 1917  cd /root/
+ 1918  ls
+ 1919  cd history/
+ 1920  ls
+ 1921  df -h
+ 1922  cd /mnt/hgfs/
+ 1923  ;s
+ 1924  ls
+ 1925  cd share/
+ 1926  ls
+ 1927  cd /root
+ 1928  ls
+ 1929  vi history.sh 
+ 1930  ls
+ 1931  cd /mnt/hgfs/share/
+ 1932  ls
+ 1933  ll
+ 1934  umask
+ 1935  cd
+ 1936  ls
+ 1937  vi history.sh 
+ 1938  crontab -e
+ 1939  ./history.sh 
+ 1940  ls
+ 1941  cat 03
+ 1942  cat 0331root.txt 
+ 1943  ls
+ 1944  vi history.sh 
+ 1945  ./history.sh
+ 1946  ls
+ 1947  cd /mnt/hgfs/share/
+ 1948  ls
+ 1949  rm -rf 0326root.txt 
+ 1950  rm -rf 0330root.txt 
+ 1951  ls
+ 1952  ll -a
+ 1953  cd ..
+ 1954  ls
+ 1955  cd share/
+ 1956  umask
+ 1957  umask .
+ 1958  cd ..
+ 1959  ls
+ 1960  ll share
+ 1961  ll
+ 1962  cd share/
+ 1963  ls
+ 1964  chmod 666 0331root.txt 
+ 1965  ls
+ 1966  ll
+ 1967  ls
+ 1968  systemctl poweroff
+ 1969  ping 192.168.20.25
+ 1970  ls
+ 1971  yum list vsftpd
+ 1972  yum check-update vsftpd
+ 1973  yum list vsftpd
+ 1974  rpm -ql vsftpd | grep /etc/
+ 1975  cd /etc/vsftpd/
+ 1976  ls
+ 1977  vi vsftpd
+ 1978  vi vsftpd.conf 
+ 1979  cp vsftpd.conf vsftpd.conf.backup
+ 1980  ls
+ 1981  systemctl status vsftpd
+ 1982  systemctl status proftpd
+ 1983  systemctl stop proftpd
+ 1984  systemctl status proftpd
+ 1985  systemctl status proftp
+ 1986  useradd ftpuser1
+ 1987  useradd ftpuser2
+ 1988  useradd ftpuser3
+ 1989  echo "mypass" | passwd --stdin ftpuser1
+ 1990  echo "mypass" | passwd --stdin ftpuser2
+ 1991  echo "mypass" | passwd --stdin ftpuser3
+ 1992  systemctl stop firewalld
+ 1993  passwd ftpuser1
+ 1994  passwd ftpuser2
+ 1995  passwd ftpuser3
+ 1996  systemctl is-active vsftpd
+ 1997  systemctl restart vsftpd
+ 1998  systemctl status proftpd
+ 1999  systemctl status proftp
+ 2000  systemctl list proftpd
+ 2001  ftp localhost
+ 2002  cd /ftphome/
+ 2003  ls
+ 2004  ll
+ 2005  cd -
+ 2006  ls
+ 2007  vi vsftpd.conf
+ 2008  vi ftpusers 
+ 2009  vi vsftpd.conf
+ 2010  cd /etc/xinetd.d/
+ 2011  ls
+ 2012  vi tftp 
+ 2013  netstat -ntp
+ 2014  pgrep
+ 2015  pgrep vsft
+ 2016  pgrep -l vsft
+ 2017  pgrep -la vsft
+ 2018  ftp localhost
+ 2019  ls
+ 2020  cd ..
+ 2021  userdel -r ftpuser1
+ 2022  userdel -r ftpuser2
+ 2023  useradd ftpuser1
+ 2024  useradd ftpuser2
+ 2025  passwd ftpuser1
+ 2026  passwd ftpuser2
+ 2027  cp /etc/yum.conf /home/ftpuser1/.
+ 2028  cp /bin/cal home/ftpuser1
+ 2029  ls /home/ftpuser1
+ 2030  pgrep -i vs
+ 2031  ps -fl
+ 2032  ps -fa
+ 2033  ps -lh
+ 2034  ps -lha
+ 2035  ls
+ 2036  find / -n "pub"
+ 2037  find / -name "pub"
+ 2038  cd /var/ftp/
+ 2039  ls
+ 2040  ll -a
+ 2041  vi hi.txt
+ 2042  ls /home/ftpuser1
+ 2043  cp /home/ftpuser1/cal .
+ 2044  ls
+ 2045  ls /home/ftpuser
+ 2046  ls /home/ftpuser1
+ 2047  rm -rf Ac*
+ 2048  ls
+ 2049  cd /etc/vsftpd/
+ 2050  ls
+ 2051  vim vsftpd.conf
+ 2052  source vsftpd.conf
+ 2053  systemctl restart vsftpd
+ 2054  cd
+ 2055  vim vsftpd.conf
+ 2056  cd /etc/
+ 2057  cd vsftpd/
+ 2058  vim vsftpd.conf
+ 2059  systemctl restart vsftpd
+ 2060  cat /etc/passwd
+ 2061  vim vsftpd.conf
+ 2062  systemctl restart vsftpd
+ 2063  vim vsftpd.conf
+ 2064  ls
+ 2065  vi user_list 
+ 2066  vim vsftpd.conf
+ 2067  ls
+ 2068  vi chroot_list
+ 2069  vim vsftpd.conf
+ 2070  ls
+ 2071  systemctl restart vsftpd
+ 2072  vim vsftpd.conf
+ 2073  ls
+ 2074  vi /chroot_list
+ 2075  vi chroot_list
+ 2076  vim vsftpd.conf
+ 2077  systemctl restart vsftpd
+ 2078  vim vsftpd.conf
+ 2079  systemctl restart vsftpd
+ 2080  vim vsftpd.conf
+ 2081  systemctl restart vsftpd
+ 2082  vim vsftpd.conf
+ 2083  systemctl restart vsftpd
+ 2084  ls
+ 2085  vim vsftpd.conf
+ 2086  systemctl restart vsftpd
+ 2087  vim vsftpd.conf
+ 2088  getsebool -a | grep ftp
+ 2089  setenforce 0
+ 2090  getenforce
+ 2091  systemctl restart vsftpd
+ 2092  vim vsftpd.conf
+ 2093  ls
+ 2094  cd /home/ftpuser1
+ 2095  ls
+ 2096  rm -rf etc/
+ 2097  ls
+ 2098  cd -
+ 2099  vim vsftpd.conf
+ 2100  systemctl restart vsftpdp
+ 2101  systemctl restart vsftpd
+ 2102  systemctl restart vsftpdp
+ 2103  vim vsftpd.conf
+ 2104  systemctl restart vsftpdp
+ 2105  systemctl restart vsftpd
+ 2106  vim vsftpd.conf
+ 2107  systemctl status vsftpd
+ 2108  pgrep -fl vsftpd
+ 2109  ssh
+ 2110  pgrep -fl ftp
+ 2111  vim vsftpd.conf
+ 2112  ls
+ 2113  vi massage
+ 2114  vim vsftpd.conf
+ 2115  ls
+ 2116  vim vsftpd.conf
+ 2117  ls
+ 2118  mv massage message
+ 2119  ls
+ 2120  vi vsftpd.conf
+ 2121  ls
+ 2122  systemctl restart vsftpd
+ 2123  vi message 
+ 2124  systemctl delete proftpd
+ 2125  systemctl status proftpd
+ 2126  systemctl status proftpd.target
+ 2127  clear
+ 2128  vi vsftpd.conf
+ 2129  ls
+ 2130  cd /var/
+ 2131  ls
+ 2132  cd ftp/
+ 2133  ls
+ 2134  cd apache/
+ 2135  wget http://mirror.apache-kr.org//httpd/httpd-2.4.43.tar.gz
+ 2136  ls
+ 2137  mkdir .message
+ 2138  rm -rf .message/
+ 2139  vi .message
+ 2140  cd -
+ 2141  cd /etc/vsftpd/
+ 2142  ls
+ 2143  vi vsftpd.conf
+ 2144  systemctl restart vsftpd
+ 2145  vi vsftpd.conf
+ 2146  systemctl restart vsftpd
+ 2147  poweroff
+ 2148  wirewhark
+ 2149  man vsftp.conf
+ 2150  man vsftpf.conf
+ 2151  man vsftp
+ 2152  whereis vsftp
+ 2153  whereis vsftpd
+ 2154  man vsftpd
+ 2155  man vsftpd.conf
+ 2156  ll ~admin01
+ 2157  ll ~ftpuser1
+ 2158  ll ~ftpuser1 -a
+ 2159  setsebool -P ftpd_full_access 1사용자별로 데이터 공개범위를 두어 서버의 데이터를 보호한다.
+ 2160  setsebool -P ftpd_full_access 1
+ 2161  ls
+ 2162  ftp localhost
+ 2163  ftp kaist.ac.kr
+ 2164  ftp ftp.kaist.ac.kr
+ 2165  ls
+ 2166  clear
+ 2167  cd /var/ftp/
+ 2168  ls
+ 2169  grep ftp /etc/passwd
+ 2170  mkdir apache
+ 2171  ls
+ 2172  mkdir utility
+ 2173  ls
+ 2174  man vsftpd
+ 2175  man vsftpd.conf
+ 2176  cd /var/ftp/
+ 2177  ls
+ 2178  ls -al
+ 2179  man vsftpd.conf
+ 2180  ls
+ 2181  systemctl status vsftpd
+ 2182  ip a s 
+ 2183  systemctl status firewalld
+ 2184  systemctl stop firewalld
+ 2185  getsebool -a | grep ftp
+ 2186  setenforce 1
+ 2187  getenforce
+ 2188  sestatus
+ 2189  yum list tcpdump
+ 2190  yum install tcpdump
+ 2191  ls
+ 2192  yum list tcpdump
+ 2193  tcpdump
+ 2194  tcpdump -i ens33
+ 2195  tcpdump -i ens34
+ 2196  tcpdump -i ens34 host sh2
+ 2197  ping sh2
+ 2198  tcpdump -i ens34 host sh2
+ 2199  tcpdump -i ens34 ftp
+ 2200  man tcpdump
+ 2201  tcpdump -i ens34 port 21
+ 2202  cat /etc/services 
+ 2203  cat /etc/services  | grep port
+ 2204  cat /etc/services  | grep ftp
+ 2205  tcpdump -i ens34 tcp port 21 host sh2
+ 2206  tcpdump -i ens34 tcp port 21 and host sh2
+ 2207  clear
+ 2208  tcpdump -i ens34 tcp port 21 and host sh2
+ 2209  tcpdump -i ens34 tcp port 21 and host sh2 -w /tmp/ftp.pkt
+ 2210  tcpdump -r /tmp/ftp.pkt 
+ 2211  cat /var/log/xferlog
+ 2212  cd /etc/vsftpd/
+ 2213  ls
+ 2214  mv vsftpd.conf vsftpd.conf.new
+ 2215  cp vsftpd.conf.backup vsftpd.conf
+ 2216  systemctl restart vsftpd
+ 2217  ls
+ 2218  vi vsftpd.conf
+ 2219  ls
+ 2220  vi testM
+ 2221  vi vsftpd.conf
+ 2222  vi
+ 2223  ls
+ 2224  cd /var/ftp/
+ 2225  ls
+ 2226  vi .message
+ 2227  cd -
+ 2228  vi vsftpd.conf
+ 2229  systemctl restart vsftpd
+ 2230  mkdir /var/ftp/upload
+ 2231  mkdir /var/ftp/pub
+ 2232  vi vsftpd.conf
+ 2233  systemctl restart vsftpd
+ 2234  ls /var/ftp/ -a
+ 2235  ll /var/ftp/ -a
+ 2236  vi vsftpd.conf
+ 2237  chmod 777 /var/ftp/upload
+ 2238  systemctl restart vsftpd
+ 2239  ll /var/ftp/ -a
+ 2240  systemctl restart vsftpd
+ 2241  ll /var/ftp/ -a
+ 2242  vi vsftpd.conf
+ 2243  systemctl restart vsftpd
+ 2244  ll /var/ftp/upload -a
+ 2245  vi /var/ftp/pub/test.txt
+ 2246  ll /var/ftp/pub/ -a
+ 2247  vi vsftpd.conf
+ 2248  ls
+ 2249  vi user_list 
+ 2250  systemctl restart vsftpd
+ 2251  vi user_list 
+ 2252  vi vsftpd.conf
+ 2253  ls
+ 2254  vi chroot_list 
+ 2255  systemctl restart vsftpd
+ 2256  vi /var/ftp/upload/.message
+ 2257  vi chroot_list 
+ 2258  vi vsftpd.conf
+ 2259  systemctl restart vsftpd
+ 2260  ll /var/ftp/upload -a
+ 2261  rm -rf /var/ftp/upload/issue 
+ 2262  ls
+ 2263  cat /var/ftp/upload/test.txt 
+ 2264  vi /var/ftp/upload/test.txt 
+ 2265  vi vsftpd.conf
+ 2266  systemctl restart vsftpd
+ 2267  ls
+ 2268  vi user_list 
+ 2269  systemctl restart vsftpd
+ 2270  cp /root/.bashrc /var/ftp/upload/.
+ 2271  ls
+ 2272  vi user_list 
+ 2273  systemctl restart vsftpd
+ 2274  ls
+ 2275  vi ftpusers
+ 2276  vi vsftpd.conf
+ 2277  ls
+ 2278  vi vsftpd.conf
+ 2279  ls
+ 2280  ls
+ 2281  ls -al /var/ftp/
+ 2282  cd /var/
+ 2283  cd ftp/
+ 2284  ls
+ 2285  ll
+ 2286  chmod 644 upload/
+ 2287  chmod 645 upload/
+ 2288  ll
+ 2289  chmod 777 upload
+ 2290  ps -ef | grep vsftpd | grep -v grep
+ 2291  ls
+ 2292  ls -al
+ 2293  rm -rf hi.txt 
+ 2294  poweroff
+ 2295  l;s
+ 2296  ls
+ 2297  ./history.sh
