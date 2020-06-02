@@ -1,0 +1,46 @@
+ldap 서버와 krb 서버가 구축 되어야 함
+
+	/etc/auto.master.d/
+	/-	직접맵
+	설정파일 (절대경로와 파일이름은 원하는 데로)	
+	ex) /- /etc/auto.indirect
+
+	/etc
+	직접맵
+	마운트포인트	-마운트옵션	nfs서버의공유자원
+	직접맵인경우는 마운트포인트가 반드시 절대경로여야함
+
+	ex) /mnt/manual	-rw,sync,sec=sys	s2:shares/manual
+
+
+간접맵
+	/etc/auto.master.d/
+	- 왼쪽 첫부분에 절대경로를 적음
+	- ex)/mnt (/mnt를 기준 디렉토리로 설정)  
+
+	/etc/
+	- 상대경로를 적음
+	
+	설정 파일 보기
+	df -ah
+
+
+	직접맵으로 하기 어려운 경우
+	- 접속 허용할 계정을 제한할 경우
+		*	-...	s2:/home/&
+		- 간접맵
+		 *	-rw,sync,sec=krb5p	s2:/shares/&
+		 * 처음 위치에만 가능
+		 & 마지막 위치에만 가능
+		 문법상 처음과 끝이 같아야 됨
+			ex) test	-... s2:/share/test   O
+				test	-... s2:/shares/test2test O
+
+
+
+	wget -O /etc/krb5.keytab http://classroom.example.com/pub/keytabs/desktop2.keytab
+
+samba automount
+	nfs와 거의 비슷
+	옵션에
+		-fstype=cifs,credentials=/.../.. ://servername/마운트할 디렉토리
