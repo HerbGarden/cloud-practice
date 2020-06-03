@@ -1,0 +1,158 @@
+시험결과제출 : 모두 풀었습니다.
+이름 : 김명수
+
+
+정보보안운영 
+----------------------------------
+[준비사항]
+server1과 server2의 /etc/hosts 파일에
+각각 상대방 host를 등록하세요.
+
+server1 에서  필요한 계정을 생성하고 암호설정을 하세요
+
+younghee
+chulsoo
+haha
+
+server2 에서 필요한 계정을 생성하고 암호설정을 하세요
+
+younghee
+nara
+hongman
+
+server2 에서는 모든 패키지를 update 하고 리부팅하세요.
+그리고 server2 에서 "X Window System" Xfce firefox를 설치하세요.
+server2 의 디폴트 런레벨을 graphical.target 으로 하세요.
+==> server2: yum update
+    server2: reboot
+    server2: yum -y install epel-release ; Xfce 설치를 위해서
+    server2: yum -y groupinstall "X Window System" Xfce 
+    server2: yum -y install firefox
+    server2: systemctl set-default graphical.target
+    server2: systemctl isolate graphical.target ; 지금당장 Xwindow 사용
+
+
+----------------------------------------------------------------
+*** 성공적인 수행여부를 쓰세요 - 예, 아니오로 쓰세요. ****
+
+[보안접속서비스 ssh 서비스  구현]
+
+-  server1 과 server2 에 각각 younghee 계정을 만들고 암호를 설정하세요
+그리고 아래처럼 ssh 공개키 인증이 될수 있도록 설정하세요.     
+
+- server1>younghee 계정이  ssh server2 ; 암호없이 login 되어야합니다.
+  server2>younghee  계정이  ssh server1 ; phass-phrase : hello 를 입력하면 login 되어야합니다.
+
+** 성공적인 수행여부 : 예
+
+- server1 에서는 telnet 처럼 ssh 로 root login 이 되지 않도록 하세요.
+
+-  server2 에서 server1 로 ssh login 할때 아래의 메세지가 출력되도록 하세요
+
+*. server1, server2 에서 각각 tar -cf /home/younghee /etc/ssh/sshd_config -P  /backup/server1_ssh.tar
+
+*************************************************
+    Hacking is not accepted !
+    Do not hacking this server !
+    Illegal attacks are tracked.
+*************************************************
+
+** 성공적인 수행여부 : 예
+  
+[방화벽 및 selinux 보안 설정]
+
+- server1 에 telnet 서버를 설치하고 telnet 서버의 접속을
+   server2 에서만 접속이 가능하도록 방화벽 설정을 하세요.
+   리부팅 후에도 아무런 작업없이 텔넷접속이 되어야 합니다
+
+** 성공적인 수행여부 : 예
+
+-  server1 에 웹서버를 설치하고 웹서버포트를 8080으로 변경하세요.
+   DocumentRoot  /var/myhome 으로 하세요.
+   selinux 는 enforcing 상태로 하세요.
+   방화벽 zone은 public 으로 하세요. 
+   리부팅 후에도  웹서버로  접속이 되어야 합니다.
+
+** 성공적인 수행여부 : 예
+
+-   server2 에서 
+        http://server1.example.com  접속시
+             welcome to server1.example.com   메시지가 출력되어야 합니다.
+
+** 성공적인 수행여부 : 예
+
+* server1, server2 에서 각각 firewall-cmd --reload 한다음
+                             firewal-cmd --list-all > /backup/firewall.txt
+* server1 에서 ls -Zd /var/myhome > /backup/sestatus_myhome.txt
+* server1 에서 cp /etc/httpd/conf/httpd.conf  /backup/httpd.conf.txt
+------------------------------------------------------------------------
+[loggin 설정 ]
+
+- server2 를  원격로그서버로 구성해서
+  server1 의 authpriv 의 모든 메세지를  server2 에 /var/log/remote_hosts/server1/
+  디렉토리에 저장되게 하세요.
+
+** 성공적인 수행여부 : 예
+
+- server1 에서 alert 레벨이상의 모든 기록을 현재 접속해 있는 server1 의 모든 사용자들에게 
+   출력되게 하세요.
+
+** 성공적인 수행여부 : 예
+
+* server1,server2 에서 각각 cp /etc/rsyslog.conf  /backup  으로 복사
+
+----------------------------------------------------------------
+[데이터 암호화/복호화]
+
+- server1 에서 chulsoo 가 나라한테 비밀편지를 보냅니다
+   누군가가 중간에서 편지를 가로채더라도 내용을  볼수 없도록 
+   비밀편지를 공개키로  암호화하세요.
+   server2의 nara 만이 chulsoo가 보낸 비밀편지를 볼수 있어야 합니다.
+   썬더메일을 설치하지말고 단순히 mail 명령을 사용하세요.
+  (mail 이 설치안되어 있으면 패키지를 설치해야 합니다)
+   ex) mail -s "hi nara" nara@server2  <  /home/chlusoo/암호화된메일파일
+   nara가 메일을 받아서 내용을 볼수 있어야 합니다.
+
+
+** 성공적인 수행여부 : 예
+
+* server1 에서 암호화된 메일파일을 /backup 으로 복사
+* server2 에서 해독된 메일을 캡처해서 /backup으로 복사
+----------------------------------------------------------------
+[DB 보안]
+
+-  server1 에 mariadb 서버를 설치하고 
+    아래처럼 보안설정을 하세요.
+
+    db 관리자 계정 암호를 설정합니다.
+    db 관리자는 local 에서만 접속을 허용합니다.
+    test DB 는 삭제합니다.
+    root 계정과 일반접속계정 wpuser 계정만 DB 접속이가능해야 합니다.
+    wpuser 계정은 wpdb 의 모든테이블에 대해서 모든 권한을 가져야 합니다.
+    wpuser 계정은 원격에서도 server1 의 db server 로 접속이 가능해야 합니다.
+    (ex  server2에서  > younghee 계정이   mysql -u wpuser -h server1.example.com -p )
+	
+** 성공적인 수행여부 : 예
+
+* server1 에서 root 로 db 서버 접속후 
+use mysql 
+select host,user,password from user 의 출력결과를 
+복사해서 /backup/dbuser.txt 로 저장
+
+-------------------------------------------------------------
+[사용자 보안 ]
+
+- server1 의 haha 는 어떤데이터에 대해서도 tar 백업을 할수 있는
+ sudo 권한을 가져야 합니다.
+ 설정완료후 haha 가 /home/*  을 tar 백업해서 /tmp/home.tar 로 
+ 저장하세요.
+
+
+
+** 성공적인 수행여부 : 예
+
+server1 에서.
+cp /etc/sudoers.conf  파일을  /backup 에 복사
+
+
+-----------------------------------------------------
