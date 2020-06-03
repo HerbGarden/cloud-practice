@@ -1,0 +1,735 @@
+    1  ll
+    2  yum install vim*
+    3  vim search vim
+    4  yum search vim
+    5  ll
+    6  ls
+    7  cd /etc/
+    8  ls
+    9  vim .bashrc
+   10  vim bashrc 
+   11  alias
+   12  vim bashrc 
+   13  alias
+   14  source bashrc
+   15  alias
+   16  vi bash
+   17  vi bashrc
+   18  ;;
+   19  ll
+   20  hostname
+   21  cd
+   22  ls
+   23  cd /
+   24  ls
+   25  ls
+   26  ll
+   27  yum install bash-completion
+   28  clear
+   29  cd /etc/sysconfig/network-scripts/ifcfg-eth0 
+   30  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+   31  :wq
+   32  clear
+   33  ls
+   34  nmcli connection
+   35  nmcli connection reload
+   36  nmcli connection up eth0
+   37  ping google.com
+   38  yum install bash-completion
+   39  ls
+   40  ip a s
+   41  hostname
+   42  hostnamectl set-hostname server.example.com
+   43  hostname
+   44  hostnamectl set-hostname server1.example.com
+   45  hostname
+   46  history
+   47  hostname
+   48  ip a s
+   49  nmtui
+   50  clear
+   51  ls
+   52  vi /etc/hosts
+   53  :q:q
+   54  cleaer
+   55  ls
+   56  clear
+   57  ls
+   58  ls
+   59  vi /etc/hosts
+   60  cd /etc/
+   61  ls
+   62  ls ssh
+   63  ls ss
+   64  ls ssl
+   65  ls
+   66  ls ssl
+   67  ll
+   68  cd
+   69  ls
+   70  useradd younghee
+   71  useradd chulsoo
+   72  useradd haha
+   73  passwd younghee 
+   74  passwd chulsoo 
+   75  passwd haha
+   76  su - younghee
+   77  cd /etc/ssh/
+   78  vi sshd_config 
+   79  systemctl restart sshd
+   80  vi /etc/
+   81  vi /etc/issue.net 
+   82  systemctl restart sshd
+   83  vi /etc/ssh/sshd_config 
+   84  systemctl restart sshd
+   85  alias
+   86  cd /etc/
+   87  vi rsyslog.conf 
+   88  systemctl restart syslog.socket 
+   89  systemctl restart syslog
+   90  systemctl restart rsyslog
+   91  logger authpriv.notice "hhhhhhhhhhhhhhhhhhhhhh"
+   92  logger -p authpriv.notice "hhhhhhhhhhhhhhhhhhhhhh"
+   93  vi /etc/issue.net 
+   94  systemctl restart sshd
+   95  cd rsyslog.d/
+   96  ls
+   97  cp listen.conf alert.conf
+   98  vi alert.conf 
+   99  systemctl restart rsyslog.service
+  100  logger -p auth.alert "alert alert"
+  101  cd
+  102  yum install telnet-server
+  103  cd /etc/
+  104  ls
+  105  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=s2 accept'
+  106  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.122.20 accept'
+  107  firewall-cmd --list-all
+  108  firewall-cmd --reload 
+  109  firewall-cmd --list-all
+  110  firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=192.168.122.20 accept'
+  111  firewall-cmd --reload 
+  112  firewall-cmd --list-all
+  113  firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  114  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  115  firewall-cmd --reload 
+  116  firewall-cmd --list-all
+  117  firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  118  firewall-cmd --reload 
+  119  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  120  firewall-cmd --reload 
+  121  firewall-cmd --list-all
+  122  yum install httpd
+  123  firewall-cmd --add-service=httpd
+  124  firewall-cmd --add-service=http
+  125  firewall-cmd --add-service=http --permanent 
+  126  cd /etc/httpd/conf/
+  127  ls
+  128  vi httpd.conf 
+  129  cd /var/www/html
+  130  mkdir /var/myhome
+  131  echo " welcome to server1.example.com" > /var/myhome/index.html
+  132  firewall-cmd --list-all
+  133  yum install telnet
+  134  telnet s1
+  135  systemctl start telnet-server
+  136  systemctl start telnet-server.socket
+  137  systemctl start telnet.socket 
+  138  telnet s1
+  139  cd /var/
+  140  ll
+  141  ll -Zd myhome/
+  142  getenforce
+  143  semanage fcontext -L
+  144  semanage fcontext -l
+  145  yum install -y policycoreutils-python.x86_64 
+  146  semanage fcontext -l
+  147  semanage fcontext -l | grep httpd
+  148  cd /var/www/html/
+  149  cd -
+  150  ll -Zd www/html
+  151  semanage fcontext -a -t httpd_sys_content_t '/var/myhome(/.*)?'
+  152  ll
+  153  ls
+  154  cd myhome/
+  155  ls
+  156  ll -Z
+  157  cd ..
+  158  restorecon -R /var
+  159  cd myhome/
+  160  ll -Z
+  161  cd ..
+  162  firewall-cmd --list-all
+  163  curl s1
+  164  systemctl restart httpd
+  165  curl s1
+  166  vi /etc/httpd/conf/httpd.conf 
+  167  netstat
+  168  lsof
+  169  yum provides netstat
+  170  yum list netstat
+  171  yum search netstat
+  172  yum install net-tools.x86_64 
+  173  netstat -antup
+  174  netstat -antup | grep 8080
+  175  ls
+  176  systemctl restart httpd
+  177  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  178  firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  179  firewall-cmd --reload 
+  180  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  181  firewall-cmd --permanent --zone=public --add-rich-rule='rule family=ipv4 source address=192.168.122.20/24 forward-port port=80 protocol=tcp to-port=8080'
+  182  firewall-cmd --permanent --remove-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  183  firewall-cmd --reload 
+  184  curl s1
+  185  curl s1:8080
+  186  firewall-cmd --list-all
+  187  firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.122.20 service name=telnet accept'
+  188  firewall-cmd --permanent --zone=public --remove-rich-rule='rule family=ipv4 source address=192.168.122.20/24 forward-port port=80 protocol=tcp to-port=8080'
+  189  firewall-cmd --permanent --zone=public --add-rich-rule='rule family=ipv4 source address=192.168.122.0/24 forward-port port=80 protocol=tcp to-port=8080'
+  190  firewall-cmd --reload
+  191  mail -s "hi nara" nara@s2
+  192  yum install mail
+  193  yum provides mail
+  194  yum search nara
+  195  yum search mail
+  196  yum install mailx
+  197  mail
+  198  mail -s "hi nara" nara@s2
+  199  yum remove mialx
+  200  yum remove mailx
+  201  yum install postfix
+  202  systemctl restart postfix
+  203  mail
+  204  yum install mailx
+  205  mail
+  206  s2
+  207  mail -s "hi" nara@s2
+  208  mail
+  209  netstat -p
+  210  netstat -tulpn
+  211  netstat -tulpn | grep 25
+  212  mail -s 'hi' root@s1
+  213  mail
+  214  systemctl start smtp
+  215  systemctl status postfix
+  216  telnet 
+  217  telnet s1 25
+  218  firewall-cmd --add-service=smtp
+  219  systemctl start postfix
+  220  systemctl start mailx
+  221  systemctl stop firewalld
+  222  telnet s1 25
+  223  telnet localhost 25
+  224  systemctl start firewalld
+  225  telnet localhost 25
+  226  mail
+  227  mail root@localhost
+  228  mail
+  229  vi /etc/hosts
+  230  ip a s
+  231  vi /etc/hosts
+  232  mail -s "hi" root@server2
+  233  mail
+  234  vi /etc/mail.rc 
+  235  vi /etc/postfix/main.cf
+  236  yum install mariadb-server.x86_64 
+  237  mysql -u root
+  238  mysql -u root -root
+  239  mysql -u root -p
+  240  systemctl restart mariadb.service 
+  241  mysql -u root
+  242  mysql -u root -p
+  243  mysql -u root
+  244  mysql -u root -p 1234
+  245  mysql -u root -p
+  246  firewall-cmd --add-service=mysql
+  247  firewall-cmd --add-service=mysql --permanent 
+  248  mysql -root
+  249  mysql -u root 
+  250  mysql -u root
+  251  mysql -u root -p
+  252  cd /etc/sodoers
+  253  cd /etc/
+  254  vi sodoers
+  255  vi sudoers
+  256  visudo
+  257  su - haha
+  258  visudo
+  259  su - haha
+  260  visudo
+  261  su - haha
+  262  visudo
+  263  su - haha
+  264  visudo
+  265  whereis tar
+  266  tar /h.tar issue*
+  267  tar /h.tar issue.net 
+  268  tar -cvf /h.tar issue.net 
+  269  tar -cvf /tmp/home.tar /home/*
+  270  rm -rf /tmp/home.tar 
+  271  visudo
+  272  su - haha
+  273  poweroff
+  274  ssh-copy-id root@172.16.83.2
+  275  ssh-copy-id root@
+  276  ssh-copy-id root@172.16.83.2
+  277  clear
+  278  cd /etc/
+  279  vi ssh/
+  280  q
+  281  clear
+  282  cd ssh/
+  283  vi sshd_config 
+  284  clear
+  285  systemctl restart sshd
+  286  cd /etc/
+  287  cd ssh
+  288  vi sshd_config 
+  289  systemctl restart sshd
+  290  su - younghee
+  291  tar -cf /backup/server1_ssh.tar -P /home/younghee /etc/ssh/sshd_config
+  292  mkdir /backup
+  293  tar -cf /backup/server1_ssh.tar -P /home/younghee /etc/ssh/sshd_config
+  294  firewall-cmd --list-all
+  295  systemctl enable httpd
+  296  systemctl start httpd
+  297  firewall-cmd --list-all > /backup/firewall.txt
+  298  ls -Zd /var/myhome > /backup/sestatus_myhome.txt
+  299  cp /etc/httpd/conf/httpd.conf /backup/httpd.conf.txt
+  300  cp /etc/rsyslog.conf /backup
+  301  mysql -u root
+  302  systemctl start mysql
+  303  systemctl start mariadb.service 
+  304  mysql -u root
+  305  mysql -u root -p
+  306  vi /backup/dbuser.txt
+  307  cd /etc/
+  308  vi sudoers
+  309  visudo
+  310  vi sudoers
+  311  cp /etc/sudoers /backup/
+  312  mail
+  313  mail -s "hi" root@192.168.122.10
+  314  mail
+  315  rpm -qa sendmail
+  316  yum list sendmail
+  317  yum list postfix
+  318  systemctl start postfix
+  319  mail -s "hh" root@s1
+  320  mail
+  321  vi /etc/hostname 
+  322  mail -s "hh" root@server1
+  323  mail
+  324  mail -s "hh" root@server2
+  325  mail
+  326  mail -s "hh" root@server2
+  327  vi /etc/postfix/main.cf
+  328  cd /etc/postfix/
+  329  ls
+  330  cp main.cf main.cf.orig
+  331  vi mail.cf
+  332  vi main.cf
+  333  systemctl restart postfix
+  334  mail
+  335  mail -s "hh" root@server2
+  336  cd
+  337  ls
+  338  ll
+  339  cd /home/chulsoo/
+  340  ls
+  341  gpg --import lapil-key.asc 
+  342  su - chulsoo
+  343  cd
+  344  ls
+  345  rm -rf .gnupg/
+  346  su - chulsoo 
+  347  mail
+  348  mail root@server2
+  349  mail
+  350  mail root@server2
+  351  mail
+  352  mail root@server2
+  353  scp /home/chulsoo/hi.txt.gpg nara@server2:~/.
+  354  ls
+  355  cp /home/chulsoo/hi.txt.gpg > /backup/.
+  356  cp /home/chulsoo/hi.txt.gpg /backup/.
+  357  vi /var/log/maillog 
+  358  mail root@server2
+  359  vi /var/log/maillog 
+  360  firewall-cmd --add-service=smtp
+  361  vi /var/log/maillog 
+  362  mail root@server2
+  363  mail
+  364  su - chulsoo
+  365  tar -cf 김명수_server1_backup.tar /backup
+  366  ls
+  367  tar -tvf 김명수_server1_backup.tar 
+  368  vi /etc/ssh/
+  369  vi /etc/ssh/sshd_config 
+  370  systemctl restart sshd
+  371  ls
+  372  cp 김명수_server1_backup.tar /var/myhome/.
+  373  cd /
+  374  ls
+  375  mv 김명수_server2_backup.tar /var/myhome/.
+  376  ls -Zd /var/myhome/
+  377  cd /var/myhome/
+  378  ls
+  379  cd /backup/
+  380  ls
+  381  vi firewall.txt 
+  382  lshw
+  383  yum install lshw
+  384  lshw
+  385  free
+  386  free -h
+  387  df -h
+  388  lshw
+  389  lshw | grep 20
+  390  lshw | grep nic
+  391  cd /var/log
+  392  ls
+  393  vi messages 
+  394  cat messages | grep error
+  395  cat messages | grep err
+  396  vi /etc/rsyslog.conf 
+  397  logger -p user.err "sdhdshdshds"
+  398  cat messages | grep err
+  399  vi messages 
+  400  vi /etc/rsyslog.conf 
+  401  systemctl restart rsyslog
+  402  ps
+  403  새ㅔ
+  404  top
+  405  cd
+  406  top > ps.txt
+  407  vi ps.txt 
+  408  rm -rf ps.txt 
+  409  top
+  410  df -h
+  411  fdisk /dev/vda
+  412  fdisk /dev/vda -l
+  413  fdisk /dev/vda -lh
+  414  fdisk /dev/vda -lv
+  415  fdisk /dev/vda -l -h
+  416  fdisk /dev/vda -l
+  417  free
+  418  free -h
+  419  df -h
+  420  df -P | grep -v ^Filesystem | awk '{sum += $2} END { print sum/1024/1024 " GB" }'
+  421  df -P | grep -v ^Filesystem | awk '{sum += $3} END { print sum/1024/1024 " GB" }'
+  422  df -P | grep -v ^Filesystem | awk '{sum += $4} END { print sum/1024/1024 " GB" }'
+  423  df -P | grep -v ^Filesystem | awk '{sum += $2} END { print sum/1024/1024 " GB" }'
+  424  df -h
+  425  df .
+  426  fdisk /dev/vda 
+  427  fdisk /dev/vda -l
+  428  fdisk /dev/vd -l
+  429  fdisk /dev/vda -l
+  430  fdisk /dev/vdb -l
+  431  fdisk /dev/vda -l
+  432  cd /
+  433  find . -xdev -type d -exec /bin/echo -n "{}:"\; -exec sh -c "ls {}|wc -l"\;
+  434  find . -xdev -type d -exec /bin/echo -n "{}:"\;-exec sh -c "ls {}|wc -l"\;
+  435  find . -xdev -type d -exec /bin/echo -n "{}:"\;-exec sh -c "ls {}| wc -l"\;
+  436  fdisk /dev/vda -l
+  437  df -i
+  438  df -h
+  439  mount -a
+  440  ll
+  441  df -h
+  442  ls -d /home/
+  443  ll -ad /home/
+  444  ll -ah /home/
+  445  ll -adh /home/
+  446  cd home/
+  447  du -a
+  448  du -s
+  449  du -sh
+  450  pvdisplay 
+  451  vgdisplay 
+  452  lvs
+  453  vgs
+  454  vgdisplay 
+  455  lvdisplay 
+  456  lshw
+  457  uname -a
+  458  uname -r
+  459  uname
+  460  cat /etc/issue
+  461  cat /etc/redhat-release 
+  462  kernel -v
+  463  bash -v
+  464  vier
+  465  ssh --version
+  466  yum list ssh
+  467  yum list sshd
+  468  yum list openssh-server
+  469  rpm -qa
+  470  yum installed
+  471  yum list installed
+  472  yum install finger
+  473  yum list installed
+  474  rpm -qa
+  475  uptime 
+  476  top -us
+  477  dmesg
+  478* 
+  479  man dmesg
+  480  dmesg --level err
+  481  dmesg --level error
+  482  dmesg --level err
+  483  swap -s
+  484  swap -l
+  485  swapon -s
+  486  swapon -sh
+  487  free
+  488  free -h
+  489  swapon -l
+  490  swapon -a
+  491  swapon --byte
+  492  vi /etc/proc
+  493  vi /proc/
+  494  cd pro
+  495  cd proc
+  496  cd /proc/
+  497  ls
+  498  vi cpuinfo 
+  499  grep proc /proc/cpuinfo 
+  500  grep processor /proc/cpuinfo 
+  501  vi cpuinfo 
+  502  grep model name /proc/cpuinfo 
+  503  grep "model name" /proc/cpuinfo 
+  504  grep "model name" /proc/cpuinfo -m 1
+  505  free 
+  506  free -h
+  507  free -h | awk '{print $2}'
+  508  free -h | grep Mem  |awk '{print $2}'
+  509  free -h | grep Mem  |awk '{print $3}'
+  510  cat /proc/meminfo | grep MemTotal
+  511  fdisk -l
+  512  lsblk
+  513  file -s "/dev/svd"
+  514  file -s "/dev/vda"
+  515  file -s "/dev/vda" | grep data
+  516* lsblk | 
+  517  lsblk | grep disk | awk `{print $1}`
+  518  lsblk | grep disk | awk '{print $1}'
+  519  lsblk | grep disk | awk '{print $1}'| wc -l
+  520  print {1..1}
+  521  echo {1..1}
+  522  echo {1..2}
+  523  a=1
+  524  echo $a
+  525  lsblk | grep disk | awk `{print $${a}}`
+  526  lsblk | grep disk | awk '{print $${a}}'
+  527  lsblk | grep disk | awk '{print $`${a}`}'
+  528  lsblk | grep disk | awk "{print $`${a}`}"
+  529  lsblk | grep disk | awk "{print $${a}}"
+  530  lsblk | grep disk | awk "{print \$${a}}"
+  531  a=2
+  532  lsblk | grep disk | awk "{print \$${a}}"
+  533  name=`file -s "/dev/vda"`
+  534  echo $nam
+  535  echo $name
+  536  test
+  537  a=a
+  538  if(($a!="a")); then echo hh; fi
+  539  if(("$a"!="a")); then echo hh; fi
+  540  echo $a
+  541  if(("$a"="a")); then echo hh; fi
+  542  if(("$a"='a')); then echo hh; fi
+  543  if(("$a"=='a')); then echo hh; fi
+  544  if[ "$a" = 'a' ]; then echo hh; fi
+  545  if[ "$a" = 'a' ]; then; echo hh; fi
+  546  if[ "$a" = :a" ]; then echo hh; fi
+
+q
+  547  if[ "$a" = :a" ]; then echo hh; fi;
+  548  if[ "$a" = :a" ]
+then
+echo 11
+fi
+
+  549  if[ "$a" = "a" ]; then echo hh; fi;
+  550  if[ "$a" = "a" ]
+  551  test
+  552  test [ "$a" = "a" ]
+  553  test [ $a = a ]
+  554  test [$a=a]
+  555  echo $?
+  556  test [$a!=a]
+  557  echo $?
+  558  test $a != a
+  559  echo $?
+  560  test $a = a
+  561  echo $?
+  562  fdisk /dev/vda -l
+  563  cat /proc/partitions 
+  564  df -h
+  565  df -P
+  566  cat /proc/partitions 
+  567  ls
+  568  cat swaps 
+  569  CAT DMA
+  570  cat dma
+  571  cat iomem 
+  572  ls
+  573  ls *info
+  574  vi stat
+  575  vi uptime 
+  576  df -h
+  577  fdisk /dev/vda
+  578  fdisk /dev/vda -l
+  579  fdisk /dev/vda -lh
+  580  fdisk /dev/vda -l
+  581  fdisk -l
+  582  fdisk /dev/vda -l | grep vda
+  583  fdisk /dev/vda -l | grep vda*
+  584  fdisk /dev/vda -l | grep vda(.*)
+  585  fdisk /dev/vda -l | grep vda(.*)?
+  586  fdisk /dev/vda -l | grep vda?
+  587  fdisk /dev/vda -l | grep vda.
+  588  fdisk /dev/vda -l | grep vda.*
+  589  cat /proc/partitions 
+  590  cat /proc/partitions |grep vda*
+  591  fdisk /dev/vda -l
+  592  cat /proc/partitions | grep vda
+  593  cat /proc/partitions | grep vda | grep -v "0"
+  594  cat /proc/partitions | grep vda | grep -vw "vda"
+  595  cat /proc/partitions | grep vda | grep -vw "vda" | wc \l
+  596  cat /proc/partitions | grep vda | grep -vw "vda" | wc -l
+  597  lsblk | grep disk | awk "{print \$${a}}"
+  598  lsblk | grep disk |"
+  599  lsblk | grep disk "
+  600  lsblk | grep disk
+  601  lsblk
+  602  a=lsblk
+  603  echo $a
+  604  a=`lsblk`
+  605  echo $a
+  606  echo $a | awk '{print $1}'
+  607  echo $a | awk '{print $2}'
+  608  echo {1..1}
+  609  req 1 10
+  610  seq 1 10
+  611  seq 1 1
+  612  mount | grep quota
+  613  mount | grep -w quota
+  614  mount | grep quota
+  615  mount | grep -v noquota
+  616  mount | grep -v noquota | grep quota
+  617  mount | grep -v noquota | grep quota | wc -w
+  618  mount | grep -v noquota | grep quota | wc -l
+  619  cd /var/log
+  620  ls
+  621  vi /etc/rsyslog.conf 
+  622  ls
+  623  vi secure 
+  624  cat secure | grep ssh
+  625  ls
+  626  ls btmp
+  627  vi btmp 
+  628  cat secure | grep ssh | tail -n 5
+  629  ls
+  630  vi cron
+  631  좨
+  632  who
+  633  user
+  634  users
+  635  W
+  636  w
+  637  cd /home/
+  638  ls
+  639  ll
+  640  ll -h
+  641  ll -dh 
+  642  ll -d
+  643  ll -h
+  644  ls -al 
+  645  ll
+  646  ll -s
+  647  du -s
+  648  du
+  649  du -h
+  650  du -mh
+  651  du -msh
+  652  du -mh
+  653  du -mh /home/younghee/
+  654  du -msh /home/younghee/
+  655  du -msha /home/younghee/
+  656  du -mha /home/younghee/
+  657  du -mhs /home/younghee/
+  658  ls /home/
+  659  du -mhs /home/younghee/
+  660  du -hs /home/younghee/
+  661  du - /home/younghee/
+  662  du -s /home/younghee/
+  663  du -s /home/
+  664  df -h
+  665  df
+  666  df -k
+  667  du -s /home/ | awk '{print $1}'
+  668  cd /proc
+  669  ls
+  670  uname -r
+  671  uname 
+  672  cat /etc/redhat-release 
+  673  bash --version
+  674  bash --version | grep version
+  675  bash --version | grep -m version
+  676  bash --version | grep -m 1 version
+  677  ssh -V
+  678  uname
+  679  whoami
+  680  free
+  681  free -h
+  682  vi cpuinfo 
+  683  cat cpuinfo | grep model
+  684  vi cpuinfo 
+  685  {1..15}
+  686  echo {1..15}
+  687  for i in {1..15}; do echo $i; done
+  688  for i in {1..1}; do echo $i; done
+  689  pvdisplay 
+  690  pvdisplay | grep "PV Name" | awk '{print $3]'
+  691  pvdisplay | grep "PV Name" | awk '{print $3}'
+  692  pvdisplay 
+  693  pvdisplay | awk '{print}'
+  694  pvdisplay | awk '^$1 {print}'
+  695  pvdisplay | awk '{print ^$1}'
+  696  pvdisplay | awk 'length($0) {print}'
+  697  pvdisplay | grep 'PV Size'
+  698  pvdisplay | grep 'PV Size' | cut -d'' -f 3-
+  699  pvdisplay | grep 'PV Size' | cut -d'' -f 3-5
+  700  pvdisplay | grep 'PV Size' | cut -d -f 3-5
+  701  pvdisplay | grep 'PV Size' | cut -d  -f 3-5
+  702  pvdisplay | grep 'PV Size' | cut -f 3-5
+  703  pvdisplay | grep 'PV Size' | awk 'print $3 $4'
+  704  pvdisplay | grep 'PV Size' | awk '{print $3 $4}'
+  705  pvdisplay | grep 'PV Size' | awk '{print $3}'
+  706  pvdisplay | grep 'PV Size' | awk '{print $3 $4}'
+  707  vgdisplay 
+  708  lv
+  709  lvs
+  710  lvs | awk '{print $1}'
+  711  lvs | awk '{print $1}'| grep -v LV
+  712  lvs | awk '{print $3}'|
+  713  lvs | awk '{print $3}'
+  714  lvs | awk '{print $4}'
+  715  lvs | awk '{print $4}' | grep -v LSize
+  716  lvs | awk '{print $1$4}' | grep -v LSize
+  717  lvs | awk '{print $1     $4}' | grep -v LSize
+  718  lvs | awk '{print $1\t$4}' | grep -v LSize
+  719  lvs | awk '{print $1"\t"$4}' | grep -v LSize
+  720  pvs
+  721  gvs
+  722  vgs
+  723  ssh -V
+  724  history
+  725  history > 0602-03_exam_history.txt
+  726  ls
+  727  cd
+  728  ls
+  729  history > 0602-03_exam_history.txt
