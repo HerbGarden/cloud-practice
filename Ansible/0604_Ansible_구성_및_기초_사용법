@@ -1,0 +1,277 @@
+앤서블 
+
+ 
+
+여러대에 장비 인프라 구축시 자동으로 만들어 주는 도구 
+
+ 
+
+특징 
+
+Agent가 따로 필요하지 않음 
+
+ssh로 접근해 처리하므로 추가 적인 Agent가 팔요 없음 
+
+Ssh key 가 처음에 설치될 필요가 있음 
+
+인벤토리 
+
+관리 대상 서버를 등록하는 곳 
+
+/etc/ansible/hosts 
+
+  
+
+ 
+
+history 
+
+Epel-releases 설치 
+
+Ansible 설치 
+
+Bare metal 장비에 host등록하기  
+
+Ansible 설치한 장비 
+
+설정 파일 확인  
+
+Rpm –ql ansible | grep –w etc 
+
+인벤토리에 장비 등록 
+
+Vi /etc/ansible/hosts 
+
+Ip(host name) - 정적 ip경우 
+
+Ex) 맨 하단에  
+
+Server1.example.com 
+
+Ansible test 
+
+Ansible 관리 계정 만들기 
+
+Visudo 
+
+Admin 계정에 모든 권한 주기 
+
+Admin 계정으로 ssh로 접속 
+
+Test 디렉토리 만들기 
+
+Cd test  
+
+ansible server1.example.com –m ping –u root  
+
+S1 에 root 계정으로 접속 
+
+-u root 생략시 자기 계정과 똑같은 이름에 계정으로 s1에 접속 
+
+에러 발생 
+
+root계정 권한을 가지고 있지 않기 때문에 
+
+뒤에 --ask-pass 
+
+성공시 ansible로 사용 가능한 장비를 뜻함 
+
+Ansible all –m ping 
+
+인벤토리에 등록된 모든 장비를 검사함 
+
+에러1 
+
+fingerprint가 안되있을시 접속이 안될 수 있음 
+
+공개키 등록시 편리하게 관리 가능 
+
+클라에 Devops로 계정 만들기 
+
+Test 디렉토리로 가 ansible.cfg 생성 
+
+계정을 명령어에 적지 않고 접속하려면 cfg 파일에 [default] remote_user = devops를 넣어주면 된다. 
+
+-m command –a 'cat /etc/hostname'을 입력시 각 장비에 hostname을 보여준다 
+
+command를 사용하는것을 추천하진 않음 
+
+변한게 없지만 command사용시에도 변화되었다고 뜨기 때문에 
+
+devops로 관리하기 위해 sudo권한을 ALL로 준다. 
+
+--become 을 넣어야 sudo 명령어 없이 sudo 권한을 가지고 명령어를 사용할 수 있다. 
+
+Ansible.cfg 파일에 [privilege_escalation] become = true, become_user = root, become_method = sudo 넣어주면 --become없이 가능 
+
+[default] 에 inventory = ./inventory를 넣어주면 경로를 바꿀 수 있음  
+
+인벤토리에 등록한 ip os 가 다르면 os끼리 그룹으로 묶어 관리하면 편함 
+
+[group name] 
+
+ip1 
+
+Ip2 
+
+[group name2] 
+
+Ip3 
+
+Ansible 그룹명 -m ping 도 가능 
+
+중첩 그룹 작성 가능 
+
+[aaa:children] 
+
+Group name 
+
+Group name 
+
+이 와야 한다. 
+
+Inventory test 
+
+Ansible ip –list-hosts 
+
+장비가 여러대 일시 동적 인벤토리 사용 
+
+Cfg 파일 참조 순서 
+
+$ANSIBLE_CONFIG 
+
+./ansible.cfg 
+
+$HOME/ansible.cfg 
+
+/etc/ansible/ansible.cfg 
+
+Ansible ad-hoc 
+
+간단하고 신속한 작업을 원할때 사용 
+
+Ex) ansible ad-hoc  
+
+user에 관한 래퍼런스를 알고 싶으면 
+
+Ansible-doc user 
+
+-m setup 
+
+장비 상태를 보여줌 
+
+Yaml syntax--- # 생략 가능 
+
+확장자 : yml/yaml 
+
+Ex) 
+
+        - name: test 
+
+hosts: webservers 
+
+             tasks: 
+
+- yum: 
+
+    name: vsftpd 
+
+    state: present 
+
+... # 끝내기 생략 가능 잘 안씀 
+
+실행 방법 
+
+Ansible-playbook test.yaml 
+
+Yaml 편하게 편집하기 위한 방법 
+
+Home 에 .Vimrc 만들기 
+
+autocmd FileType yaml setlocal ts=2 sw=2 et autoindent 
+
+Ansible-doc 
+
+= 이면 무조건 사용해야 함 
+
+Ansible-playbook –syntax-check a.yaml 
+
+문법 체크 
+
+Debug 
+
+  Msg: ? 
+
+Asdf 
+
+Adfdafa 
+
+Adsfasd;fk 
+
+?  위치 옵션 
+
+| 줄빠꿈으로 처리 
+
+> 한줄처리 
+
+리스트 형식 및 딕션어리 형식 
+
+- name: test 
+
+  hosts: 
+
+    [server1.example.com, server2.example.com] 
+
+  tasks: 
+
+  - name: present httpd 
+
+    yum: {name: httpd, state: present} 
+
+ 
+
+Fack 변수 수집 - default 
+
+다중 play 
+
+밑에 hosts를 적고 새로운 작업을 적어주면 된다. 
+
+변수 사용 
+
+{{}} 
+
+선언  
+
+Vars: 
+
+  Service: httpd 
+
+  Service_port: 80 
+
+ 
+
+{{}}로 시작하면 ""을 붙여야 함 
+
+파일로도 만들 수 있음 
+
+Vars_files: 
+
+Vars/service.yml 
+
+Inventory 등록 
+
+권장 안함 
+
+Ip 뒤에 user=hi 
+
+Gourp 에 변수 지정할 경우 
+
+[groupname:vars] 
+
+Username=asdf 
+
+ 
+
+Ansible 관련 자료 
+
+Docs.Ansible.com 
