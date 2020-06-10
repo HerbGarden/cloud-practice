@@ -1,0 +1,231 @@
+﻿권한설정 실습 
+chmod
+1. cp /etc/issue /tmp
+-----------------
+/tmp/issue 파일 권한 설정
+sony : 모든권한
+groupA: 읽기권한
+나머지 모든 사용자 : 아무런 권한 없음
+--------------------------------------
+2.
+cp /et/host.conf  /tmp
+--------------------
+/tmp/host.conf 파일 권한 설정
+alli : 모든권한
+sony : 읽기,쓰기 권한
+groupA : 모든권한
+groupB : 아무런 권한 없읍
+dier : 실행권한
+나머지 모든 사용자 : 읽기권한
+
+selinux 실습 
+1. desktopX 를 영구적으로 selinux 를 비활성(disabled)모드로 설정하세요
+*
+enforcing - 강제모드
+permissive - 허용모드
+disabled - 비활성모드
+* 설정완료후 리부팅해서 확인해보세요.
+리부팅 한다음 getenforce 명령어로 확인.
+------------------------------------
+2. serverX 에 아파치 서버를 설치하고 웹페이지의 기본 경로를
+/var/myweb  으로 설정하고 초기페이지를 하나 만드세요
+(serverX 의 selinux 기본정책은 반드시 enforcing 모드이어야 합니다)
+foundationX 에서: http://serverX.example.com  접속햇을때
+아래처럼 웹페이지가 보이면 됩니다.
+welcome to serverX.example.com
+
+package 관리 실습  
+
+serverX 에서 kernel update 가 가능한지 확인해보세요.
+==> # yum list kernel
+* 커널 업데이트가 가능하지 않으면 repository 를 추가하여
+커널업데이트가 될수 있도록 하세요. 아래처럼 repository 를
+추가하면 커널 업데이트를 할수 있습니다.
+serverX 에서 /etc/yum.repos.d/errata.repo 를 아래처럼 작성하세요.
+[updates]
+name = redhat updates
+baseurl = http://content.example.com/rhel7.0/x86_64/errata
+enabled = 1
+gpgcheck = 0
+-------------------------------------
+1. kernel 업데이트를 하세요.
+-> 커널 업데이트후 리부팅해서 새로운 커널로 부팅이 된것이
+맞는지를 확인하세요
+==> yum list kernel
+
+filesystem 실습
+1. 1기가 크기로 파티션을 하나 잡아서  /backup 에 영구
+마운트 되도록 설정하세요, 파일시스템 타입은 xfs 로 하세요.
+2. swap 파티션을 512 메가 크기로 하나 잡아서 영구적으로
+사용할 수 있도록 하세요.
+3. server0 를 리부팅해서 /backup 이 마운트 되어있는지 확인하고
+추가했던 swap 파티션은 활성화 상태인지 확인하세요
+(swapon -s)
+4. 추가로 500메가 크기로 파티션을 한개 생성 /mydata 디렉토리에
+영구 마운트 되도록 설정하세요, 파일시스템 타입은 ext3 으로 하세요.
+systemd service 실습
+1. serverX 에 ftp server 를 설치하고 영구적으로 사용가능하도록 설정하세요
+(리부팅 후에도 ftp server 접속이 되어야 합니다)
+2. serverX 에 텔넷서버를 설치하고 사용가능하도록 설정하세요
+(텔넷 서비스는 영구적인 사용은 하지 않도록 설정하세요
+--> 리부팅후에는 텔넷 접속이 안되어야 합니다.
+3. 원격에서도 접속가능하도록 방화벽 설정을 해야 합니다.
+4. serverX 를 리부팅한다음  desktopX 에서 serverX 로 student 계정으로
+ftp 접속과 telnet 접속을 확인하세요.
+root password 복구 실습
+1. 부트로더 화면에서 5초 기다린 다음에 부팅되도록 설정하세요
+2. 부팅후 echo $RANDOM | passwd --stdin root
+(root 암호가 무작위로 변경될것입니다.)
+3. reboot 하세요.
+4. root 로 login 하세요
+5. root login 이 안되면 root login 이 될수 있도록 작업하세요.
+network 설정  실습 
+1. serverX 를 reset 하세요
+foundationX 에서 rht-vmctl reset server
+-----------------------------------------
+2. serverX 로 Xwindows 로 root 로 login 해서
+아래의 작업을 실행하세요
+nmcli dev disconnect eth0
+nmcli connection delete "System eth0"
+*. 이제 serverX 에서는 network 가 되지 않을것입니다.
+------------------------------------------
+3. serverX의 hostname 을 영구적으로
+myserverX.example.com 으로 변경하세요.
+----------------------------------------------------
+4. serverX 의 repository 를 새로 작성할것입니다.
+기존에 설정되어 있는 repository 는 삭제하세요.
+rm -f /etc/yum.repos.d/*
+--------------------------------------------------
+5. serverX 가 nework 가 될수 있도록 아래의 network 설정을 하세요
+ip addresss : 172.25.X.11
+netmask : 255.255.255.0
+gateway: 172.25.X.254
+dns: 172.25.254.254
+5. serverX 에 repository 를 새로 작성하세요.
+repository 주소는 다음과 같습니다.
+repository 주소 : http://content.example.com/rhel7.0/x86_64/dvd
+----------------------------------------------------------------
+6. 모든 작업이 완료 되었으면 리부팅한다음
+hostname 이 변경된 이름으로 되어 있는지 확인하세요.
+----------------------------------------------------------------------
+7. ip address 가 고정ip 인지를 /etc/sysconfig/network-scripts/ifcfg-xxxx
+파일에서 확인하세요 (bootproto=none 이면 고정ip입니다)
+고정ip로 설정되어 있어야 합니다.
+------------------------------------------------------------------
+8. finger 패키지를 설치해서 사용자 정보가 조회 되는지 확인하세요
+확인방법 :  finger student
+ntp 주요명령어 및 설정파일
+chronyd 서비스 관련 명령어 및 설정파일
+timedatectl
+timedatectl set-timezone Asia/Seoul
+hwclock --show  ; hardware clock 의 시간정보 출력
+hwclock --localtime --systohc  ; hwclock 을 localtime 으로 동기화
+hwclock --utc --systohc  ; hwclock 을 utc 시간으로 동기화
+chronyc source -v  ; client 가 참조하고 있는
+ntp server 의 연결상태, 동기화 상태 등을 출력
+/etc/chrony.conf  ; chronyd 설정파일
+server  ntp서버주소 [iburst]  ; iburst 는 선택사항
+* iburst 를 사용하면 사용하지 않았을때보다  더 빠르게 시간동기화가 이루어진다.
+logging  실습 
+logging
+--------
+server0 에서  우선위가 alert 이상이고
+facility 가 authpriv 인 경우
+메세지를   /var/log/auth-erros 에 남기도록 설정.
+-----------------------------
+설정완료 후  rsyslogd restart 후
+logger -p authpriv.alert "........"
+cat /var/log/auth-errors    ; 이 파일에 메세시지가 저장되어 있어야 한다
+ lvm  실습 1
+server0 에서
+logical volume 을 새로 생성해서 /mystorage 에 영구 마운트 되게 설정하세요
+조건은 다음과 같습니다.
+------------------------------------------------------------------
+800메가 크기인 newvg 에 logical volume 이름이 newlv 를 생성.
+PE size 크기는 한개당 16메가 크기로 설정
+newlv 의 파일시스템 타입은 ext4 로 설정
+newlv 크기는 PE 30개의 크기로 설정
+physical volume 은 한개만 사용.
+------------------------------------------------------------------
+lvm  실습 2
+logical volume 확장
+-------------------
+앞에서 생성한 logical volume newlv 의 전체 크기가 1.2 기가 크기가
+되도록 logical volume newlv 의 용량을 확장하세요.
+(* 마운트된 newlv의 파일시스템의 크기도 확장이 되어야 합니다)
+작업 스케쥴링   실습 2
+student 계정권한으로
+매주 월요일,수요일,금요일 오후 3시3분 4시3분 5시3분에
+아래의 명령이 자동으로  실행되도록  설정하세요.
+date >> /tmp/cron_runtime
+systemd-tmpfiles (임시파일정리)
+automount
+ automount
+- 필요할때 서버측의 공유자원(nfs 공유자원,또는 samba 공유자원)이
+클라이언트에 자동으로 마운트 되도록 하는 서비스
+또한 마운트 된 공유자원이 사용하지 않으면 자동으로 마운트해제가 된다.
+(자동으로 마운트 해제 되는데에는 약간의 시간이 소요된다(약 5~10분 정도)
+- 자주 사용하지 않지만 언제 사용될지 모르는 공유자원을 자동마운트하면
+항상 마운트했을때보다 리소스를 절약할수 있는 장점이 있다.
+- 그리고 자동마운트는 root 권한이 아니라도 가능하다.
+- 마운트 포인트를 미리 만들지 않아도 된다.
+1. autofs 패키지가 필요하다.
+2. 직접맵과 간접맵 설정이 있다.
+3. automount 할 공유자원은 fstab 에 등록하지 않는다.
+4. samba 공유자원도 automount 가능하지만 처음에는 nfs 를 위해 개발되었다.
+5. nfs server 는 공유만 되어 있으면 되고 automount 의 모든설정은
+nfs client 에서 한다.
+-----------------------------------------
+autofs 의 설정은 /etc/auto.master
+auto.master 에 include 되는 파일은 /etc/auto.master.d/*.autofs
+(확장자가 반드시 autofs 이어야 한다)
+ot@desktop0 etc]#
+공유자원 한개당 설정파일이 두개가 필요하다.
+-----------------------
+설정
+cat /etc/auto.master.d/direct.autofs
+#직접맵 설정
+# /- <---- 직접맵을 의미하는 기호
+#/-       설정파일(경로(절대경로)와 파일이름은 마음대로)   /-     /etc/auto.direct
+[root@desktop0 etc]#
+[root@desktop0 etc]# cat /etc/auto.direct
+# 직접맵으로 설정
+# 마운트포인터  -마운트옵션  nfs서버의공유자원
+# 직접맵인경우는 마운트포인트가 반드시 절대경로여야 한다
+/mnt/manual  -rw,sync,sec=sys  server0.example.com:/shares/manual
+---------------------------------------------
+cat /etc/auto.master.d/indirect.autofs
+#간접맵인경우는 왼쪽 첫부분에 절대경로를 적는다.
+#/mnt (/mnt를 기준 디렉토리로 하겠다는 의미)
+/mnt/etc/auto.indirect
+cat /etc/auto.master.d/indirect.autofs
+#간접맵인경우는 왼쪽 첫부분에 절대경로를 적는다.
+#/mnt (/mnt를 기준 디렉토리로 하겠다는 의미)
+/mnt/etc/auto.indirect
+*. 참고로 아래와 같이 마운트포인트 이름과 공유자원이름이
+같으면 한줄로 표현하는것도 가능하다.
+test   -rw,sync,sec=sys   myserver:/var/test
+sample   -rw,sync,sec=sys   myserver:/var/sample
+public   -rw,sync,sec=sys   myserver:/var/public
+==>
+*-rw,sync,sec=sys  myserver:/var/&
+----------------------------------------------
+* samba 공유자원의  automount
+-> automount 는 samba 공유자원을 automout 하더라도 nfs와 같은 형식으로
+설정으로 하면 된다.
+삼바공유자원의 automount 설정은 아래처럼 설정한다
+sample  -fstype=cifs,user=kildong,password=mypass   ://myserver/sample
+--> 보안상 좋지 않으므로  credential file 을 생성후 아래처럼 하는게 안전하다
+sample  -fstpe=cifs,credentials=/root/user.txt   ://myserver/sample
+------------------------------------------
+samba 공유자원 수동마운트
+공유자원이름을 [public] 으로 가정
+서버는 myserver 로 가정.
+samba client 에서 마운트 할때
+* 편의성과 보안을 위해서 credentials 파일을 생성한다.
+vi /root/samba_user.txt
+username=kildong
+passwd=mypass
+저장후  chmod 700 /root/samba_user.txt
+mount -t cifs //server0/bakerst /mnt/bakerst -o [rw,suid,exec,]creds=/root/samba_user.txt
+* 대괄호안의 옵션은 디폴트 옵션이라서 생략해도 같다.
