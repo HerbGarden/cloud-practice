@@ -9,6 +9,5 @@ echo 'gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub' >> /etc/yum.
 
 yum install -y google-chrome-stable
 
-#sed -n '49s/"$@"/"$@" --no-sandbox --user-data-diri/'
-
+sed -i 's/\"\$\@\"/\"\$\@\" \-\-no\-sandbox \-\-user\-data\-dir/' /usr/bin/google-chrome
 
