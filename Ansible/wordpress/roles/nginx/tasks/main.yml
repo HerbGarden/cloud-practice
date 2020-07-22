@@ -1,0 +1,234 @@
+---
+# tasks file for wordpress
+
+- name: add epel and remi repository
+  yum:
+    name: "{{item}}"
+    state: latest
+  loop:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    - https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    - yum-utils
+- name: enable remi-php74
+  ini_file:
+    dest : /etc/yum.repos.d/remi-php74.repo
+    section: remi-php74
+    option: enabled
+    value: 1
+
+#- name: yum update
+#  yum:
+#    name: "*"
+#    state: latest
+
+- name: install php-xxx 
+  yum:
+    name: "{{item}}"
+    state: latest
+  loop:
+    - php
+    - php-cli
+    - php-fpm
+    - php-mysqlnd
+    - php-zip
+    - php-devel
+    - php-gd
+    - php-mcrypt
+    - php-mbstring
+    - php-curl
+    - php-xml
+    - php-pear
+    - php-bcmath
+    - php-json
+    - php-fpm
+
+- name: get nginx rpm file
+  get_url:
+    url: http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    dest: /tmp/nginx.rpm
+    mode: '0644'
+
+- name: install nginx
+  yum:
+    name: "{{item}}"
+    state: latest
+  loop:
+    - /tmp/nginx.rpm
+    - nginx
+
+- name: Add mariadb 10.5 repository 
+  yum_repository:
+    name: mariadb
+    description: mariadb
+    baseurl: http://yum.mariadb.org/10.5/centos7-amd64
+    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+    gpgcheck: yes
+
+- name: install mariadb 
+  yum:
+    name: "{{item}}"
+    state: latest
+  loop:
+    - mariadb
+    - mariadb-server
+    - MariaDB-client
+    - MySQL-python
+
+- name: start service mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: start service mariadb
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: mariadb setting firewall
+  firewalld:
+    service: mysql
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name:  http setting firewall
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name: update mysql root password
+  mysql_user:
+    login_user: root
+    login_password: "1234"
+    name: root
+    password: 1234
+    priv: "*.*:ALL,GRANT"
+    check_implicit_admin: yes
+    host: localhost
+    state: present
+
+- name: create database
+  mysql_db:
+    login_user: root
+    login_password: "1234"
+    name: wordpress
+    state: present
+
+- name: create wp_admin
+  mysql_user:
+    login_user: root
+    login_password: "1234"
+    name: wp_admin
+    password: 1234
+    priv: "wordpress.*:ALL,GRANT"
+    host: localhost
+    state: present
+
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: get wordpress file
+  get_url:
+    url: http://wordpress.org/latest.tar.gz
+    dest: /usr/share/nginx/html/lastest.tar.gz
+    mode: '0644'
+
+- name: install unzip and rsync
+  yum:
+    name: "{{item}}"
+    state: latest
+  loop:
+    - unzip
+    - rsync
+
+- name: unarchive lastest.tar.gz
+  unarchive:
+    src: /usr/share/nginx/html/lastest.tar.gz
+    dest: /usr/share/nginx/html/
+    remote_src: yes
+
+#- name: move wordpress
+#  synchronize:
+#    src: /var/www/html/wordpress/
+#    dest: /var/www/html/
+#    dirs: yes
+#  delegate_to : "{{ansible_fqdn}}"
+
+- name: mkdir uploads
+  file:
+    path: "{{item}}"
+    state: directory
+    mode: '0755'
+  loop:
+    - /usr/share/nginx/html/wordpress/wp-content/uploads
+    - /usr/share/nginx/html/wordpress/logs
+
+- name: chown
+  file:
+    path: /usr/share/nginx/html/wordpress
+    state: directory
+    recurse: yes
+    owner: nginx
+    group: nginx
+
+- name: copy config
+  copy:
+    src: /usr/share/nginx/html/wordpress/wp-config-sample.php
+    dest: /usr/share/nginx/html/wordpress/wp-config.php
+    remote_src: yes
+
+- name: set db_name
+  lineinfile:
+    path: /usr/share/nginx/html/wordpress/wp-config.php
+    regexp: 'DB_NAME'
+    line: "define( 'DB_NAME', 'wordpress' );"
+
+- name: set user
+  lineinfile:
+    path: /usr/share/nginx/html/wordpress/wp-config.php
+    regexp: 'DB_USER'
+    line: "define( 'DB_USER', 'wp_admin' );"
+
+- name: set password
+  lineinfile:
+    path: /usr/share/nginx/html/wordpress/wp-config.php
+    regexp: 'DB_PASSWORD'
+    line: "define( 'DB_PASSWORD', '1234' );"
+
+- name: copy default.conf
+  copy:
+    src: /etc/nginx/conf.d/default.conf
+    dest: /etc/nginx/conf.d/default.conf.orig
+    remote_src: yes
+
+- name: deliver default.conf
+  copy:
+    src: default.conf
+    dest: /etc/nginx/conf.d/default.conf
+
+- name: set www.conf
+  lineinfile:
+    path: /etc/php-fpm.d/www.conf
+    regexp: "{{item.reg}}"
+    line: "{{item.li}}"
+  with_items:
+    - {reg: 'user = apache', li: 'user = nginx'}
+    - {reg: 'group = apache', li: 'group = nginx'}
+    - {reg: 'listen.owner = nobody', li: 'listen.owner = nginx'}
+    - {reg: 'listen.group = nobody', li: 'listen.group = nginx'}
+    - {reg: 'listen = 127.0.0.1:9000', li: 'listen = /var/run/php-fpm/php-fpm.sock'}
+
+- name: restart
+  service:
+    name: "{{item}}"
+    state: restarted
+  loop:
+    - nginx
+    - php-fpm
+

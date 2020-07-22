@@ -1,0 +1,58 @@
+
+- name: unarchive lastest.tar.gz
+  unarchive:
+    src: /var/www/html/lastest.tar.gz
+    dest: /var/www/html/
+    remote_src: yes
+
+- name: move wordpress
+  synchronize:
+    src: /var/www/html/wordpress/
+    dest: /var/www/html/
+    dirs: yes
+  delegate_to : "{{ansible_fqdn}}"
+
+- name: mkdir uploads
+  file:
+    path: /var/www/html/wp-content/uploads
+    state: directory
+    mode: '0755'
+
+- name: chown
+  file:
+    path: /var/www/html
+    state: directory
+    recurse: yes
+    owner: apache
+    group: apache
+
+- name: copy config
+  copy:
+    src: /var/www/html/wp-config-sample.php
+    dest: /var/www/html/wp-config.php
+    remote_src: yes
+
+- name: set db_name
+  lineinfile:
+    path: /var/www/html/wp-config.php
+    regexp: 'DB_NAME'
+    line: "define( 'DB_NAME', 'wordpress' );"
+
+- name: set user
+  lineinfile:
+    path: /var/www/html/wp-config.php
+    regexp: 'DB_USER'
+    line: "define( 'DB_USER', 'wp_admin' );"
+
+- name: set password
+  lineinfile:
+    path: /var/www/html/wp-config.php
+    regexp: 'DB_PASSWORD'
+    line: "define( 'DB_PASSWORD', '1234' );"
+
+- name: restart
+  service:
+    name: httpd
+    state: restarted
+
+

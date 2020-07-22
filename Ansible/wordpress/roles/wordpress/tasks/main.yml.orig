@@ -1,0 +1,168 @@
+---
+# tasks file for wordpress
+
+- name: add epel and remi repository
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    - https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    - yum-utils
+- name: enable remi-php74
+  ini_file:
+    dest : /etc/yum.repos.d/remi-php74.repo
+    section: remi-php74
+    option: enabled
+    value: 1
+- name: yum update
+  yum:
+    name: "*"
+    state: latest
+- name: install php-xxx 
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - php
+    - php-cli
+    - php-fpm
+    - php-mysqlnd
+    - php-zip
+    - php-devel
+    - php-gd
+    - php-mcrypt
+    - php-mbstring
+    - php-curl
+    - php-xml
+    - php-pear
+    - php-bcmath
+    - php-json
+
+- name: install mariadb 
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - mariadb-server
+    - mariadb
+    - MySQL-python
+
+- name: start service mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+- name: mariadb setting firewall
+  firewalld:
+    service: mysql
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name:  http setting firewall
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name: update mysql root password
+  mysql_user:
+    login_user: root
+    login_password: "1234"
+    name: root
+    password: 1234
+    priv: "*.*:ALL,GRANT"
+    check_implicit_admin: yes
+    host: localhost
+    state: present
+
+- name: create database
+  mysql_db:
+    login_user: root
+    login_password: "1234"
+    name: wordpress
+    state: present
+
+- name: create wp_admin
+  mysql_user:
+    login_user: root
+    login_password: "1234"
+    name: wp_admin
+    password: 1234
+    priv: "wordpress.*:ALL,GRANT"
+    host: localhost
+    state: present
+
+- name: get wordpress file
+  get_url:
+    url: http://wordpress.org/latest.tar.gz
+    dest: /var/www/html/lastest.tar.gz
+    mode: '0644'
+
+- name: install unzip
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - unzip
+    - rsync
+
+- name: unarchive lastest.tar.gz
+  unarchive:
+    src: /var/www/html/lastest.tar.gz
+    dest: /var/www/html/
+    remote_src: yes
+
+- name: move wordpress
+  synchronize:
+    src: /var/www/html/wordpress/
+    dest: /var/www/html/
+    dirs: yes
+  delegate_to : "{{ansible_fqdn}}"
+
+- name: mkdir uploads
+  file:
+    path: /var/www/html/wp-content/uploads
+    state: directory
+    mode: '0755'
+
+- name: chown
+  file:
+    path: /var/www/html
+    state: directory
+    recurse: yes
+    owner: apache
+    group: apache
+
+- name: copy config
+  copy:
+    src: /var/www/html/wp-config-sample.php
+    dest: /var/www/html/wp-config.php
+    remote_src: yes
+
+- name: set db_name
+  lineinfile:
+    path: /var/www/html/wp-config.php
+    regexp: 'DB_NAME'
+    line: "define( 'DB_NAME', 'wordpress' );"
+
+- name: set user
+  lineinfile:
+    path: /var/www/html/wp-config.php
+    regexp: 'DB_USER'
+    line: "define( 'DB_USER', 'wp_admin' );"
+
+- name: set password
+  lineinfile:
+    path: /var/www/html/wp-config.php
+    regexp: 'DB_PASSWORD'
+    line: "define( 'DB_PASSWORD', '1234' );"
+
+- name: restart
+  service:
+    name: httpd
+    state: restarted
+
+

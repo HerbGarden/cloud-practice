@@ -1,0 +1,3 @@
+- hosts: wordtest.example.com
+  roles:
+    - nginx

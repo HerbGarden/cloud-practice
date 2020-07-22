@@ -1,0 +1,112 @@
+---
+# tasks file for wordpress
+
+- name: add epel and remi repository
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    - https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    - yum-utils
+- name: enable remi-php74
+  ini_file:
+    dest : /etc/yum.repos.d/remi-php74.repo
+    section: remi-php74
+    option: enabled
+    value: 1
+- name: yum update
+  yum:
+    name: "*"
+    state: latest
+- name: install php-xxx 
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - php
+    - php-cli
+    - php-fpm
+    - php-mysqlnd
+    - php-zip
+    - php-devel
+    - php-gd
+    - php-mcrypt
+    - php-mbstring
+    - php-curl
+    - php-xml
+    - php-pear
+    - php-bcmath
+    - php-json
+
+- name: install mariadb 
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - mariadb-server
+    - mariadb
+    - MySQL-python
+
+- name: start service mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+- name: mariadb setting firewall
+  firewalld:
+    service: mysql
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name:  http setting firewall
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes
+
+- name: update mysql root password
+  mysql_user:
+    login_user: root
+    login_password: "1234"
+    name: root
+    password: 1234
+    priv: "*.*:ALL,GRANT"
+    check_implicit_admin: yes
+    host: localhost
+    state: present
+
+- name: create database
+  mysql_db:
+    login_user: root
+    login_password: "1234"
+    name: wordpress
+    state: present
+
+- name: create wp_admin
+  mysql_user:
+    login_user: root
+    login_password: "1234"
+    name: wp_admin
+    password: 1234
+    priv: "wordpress.*:ALL,GRANT"
+    host: localhost
+    state: present
+
+- name: get wordpress file
+  get_url:
+    url: http://wordpress.org/latest.tar.gz
+    dest: /var/www/html/lastest.tar.gz
+    mode: '0644'
+
+- name: install unzip
+  yum:
+    name: "{{item}}"
+    state: present
+  loop:
+    - unzip
+    - rsync
+
+
