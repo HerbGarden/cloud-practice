@@ -2,7 +2,7 @@
 
 kubectl apply -f ~/test/pv1.yaml
 kubectl apply -f ~/test/pv2.yaml
-kubectl apply -f ~/test/httpd-pvc.yaml
+kubectl apply -f ~/test/mysql-pvc.yaml
 
 echo -n "Running ."
 while [ true ]
@@ -36,7 +36,7 @@ kubectl apply -f ~/test/mysql.yaml
 echo -n "Running ."
 while [ true ]
 do
-    con=`kubectl get pods | awk /mysql/ |awk /running/`
+    con=`kubectl get pods | awk /mysql/ |awk /Running/`
     if [ -n "$con" ]
     then
         break
@@ -49,7 +49,7 @@ kubectl apply -f ~/test/wp.yaml
 echo -n "Running ."
 while [ true ]
 do
-    con=`kubectl get pods | awk /wp/ |awk /running/`
+    con=`kubectl get pods | awk /wordpress/ |awk /Running/`
     if [ -n "$con" ]
     then
         break
